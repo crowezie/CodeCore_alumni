@@ -16,6 +16,7 @@ class SkillsController < ApplicationController
       redirect_to profile_path(@profile), notice: "Skill created!"
     else
       flash[:alert] = "See errors below"
+      render :new
     end
   end
 
