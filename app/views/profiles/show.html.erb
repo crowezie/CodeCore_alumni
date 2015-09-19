@@ -1,6 +1,6 @@
 <div>
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
+  <ul class="nav nav-tabs" style="margin-bottom:10px" role="tablist">
 
       <li role="presentation" class="active">
         <a href="#skills" aria-controls="skills" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> Skills </a>
@@ -21,19 +21,36 @@
   <div class="tab-content margined-tab-content">
 
       <div role="tabpanel" class="tab-pane active" id="skills">
-          Skills go here
+         
+          <!-- Skills go here -->
+
+          <%= render 'skills_profile_show'%>
+
       </div>
 
       <div role="tabpanel" class="tab-pane" id="projects">
-          Projects go here
+
+          <!-- Projects go here -->
+
+          <%= render 'projects_profile_show'%>
+
+
       </div>
 
       <div role="tabpanel" class="tab-pane" id="education">
-          Education goes here
+          <!-- Education goes here -->
+
+          <%= render 'education_profile_show'%>
+
       </div>
 
       <div role="tabpanel" class="tab-pane" id="experience">
-          Experience goes here
+
+
+          <!-- Experience goes here -->
+
+          <%= render 'experience_profile_show'%>
+
       </div>
 
   </div>
