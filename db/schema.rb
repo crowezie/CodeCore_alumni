@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919173659) do
+ActiveRecord::Schema.define(version: 20150919175735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,19 +26,7 @@ ActiveRecord::Schema.define(version: 20150919173659) do
     t.integer  "profile_id"
   end
 
-
   add_index "assets", ["profile_id"], name: "index_assets_on_profile_id", using: :btree
-
-  create_table "inquiries", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.text     "message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "profile_id"
-  end
-
-  add_index "inquiries", ["profile_id"], name: "index_inquiries_on_profile_id", using: :btree
 
   create_table "educations", force: :cascade do |t|
     t.string   "school_name"
@@ -53,6 +41,29 @@ ActiveRecord::Schema.define(version: 20150919173659) do
 
   add_index "educations", ["profile_id"], name: "index_educations_on_profile_id", using: :btree
 
+  create_table "experiences", force: :cascade do |t|
+    t.string   "position"
+    t.string   "company"
+    t.text     "description"
+    t.string   "weblink"
+    t.string   "logo"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "profile_id"
+  end
+
+  add_index "experiences", ["profile_id"], name: "index_experiences_on_profile_id", using: :btree
+
+  create_table "inquiries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "profile_id"
+  end
+
+  add_index "inquiries", ["profile_id"], name: "index_inquiries_on_profile_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.text     "description"
@@ -77,7 +88,10 @@ ActiveRecord::Schema.define(version: 20150919173659) do
     t.string   "sourcecode"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "profile_id"
   end
+
+  add_index "projects", ["profile_id"], name: "index_projects_on_profile_id", using: :btree
 
   create_table "skills", force: :cascade do |t|
     t.string   "name"
@@ -101,9 +115,10 @@ ActiveRecord::Schema.define(version: 20150919173659) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
   add_foreign_key "assets", "profiles"
-  add_foreign_key "inquiries", "profiles"
   add_foreign_key "educations", "profiles"
-
+  add_foreign_key "experiences", "profiles"
+  add_foreign_key "inquiries", "profiles"
   add_foreign_key "profiles", "users"
+  add_foreign_key "projects", "profiles"
   add_foreign_key "skills", "profiles"
 end
