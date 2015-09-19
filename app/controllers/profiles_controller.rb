@@ -17,21 +17,25 @@ class ProfilesController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+  end
 
   private
 
   def profile_params
-
   profile_params = params.require(:profile).permit([:description, :availability, :pitch, :image, :phone, :email, :location])
-end
+  end
 
-def find_profile
-  @profile = Profile.find params[:id]
-end
+  def find_profile
+    @profile = Profile.find params[:id]
+  end
 
-def authorize!
+  def authorize!
     redirect_to root_path, alert: "access denied" unless can? :edit, @profile
-end
+  end
 
 >>>>>>> e2d676b565fbd4c390d4f78b4c6b2a9e35e98dc3
 end
