@@ -24,7 +24,19 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+gem 'simple_form'
+gem 'faker'
+gem 'cancancan'
+gem 'kaminari', '~> 0.16.3'
+gem 'delayed_job_active_record'
+gem 'animate-rails'
+gem 'font-awesome-rails'
+gem 'carrierwave'
+gem 'letter_opener', :group => :development
+gem "bootstrap-sass"
+gem 'mini_magick'
+gem 'faker'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -36,7 +48,11 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
-
+  gem 'cowsay'
+  gem 'interactive_editor'
+  gem 'awesome_print'
+  gem "rails-erd"
+  gem 'hirb'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
