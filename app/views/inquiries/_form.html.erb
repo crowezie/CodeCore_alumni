@@ -1,0 +1,12 @@
+
+<%= simple_form_for [@profile, @inquiry] do |f| %>
+
+<%= f.input :name %>
+<%= f.input :email  %>
+<%= f.input :message   %>
+
+<div class="form-group">
+  <%= f.submit "Send", class: "btn btn-primary" %>
+</div>
+
+<% end %>
