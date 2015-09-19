@@ -1,21 +1,21 @@
 class ProjectsController < ApplicationController
-  # These are basic functions. Need to modify when we need.
-
   before_action :authenticate_user!
   before_action :find_profile
-  before_action :find_project, only: [:show, :edit, :update, :destroy]
+  before_action :find_project, only: [:edit, :update, :destroy]
+  before_action :authorize!, only: [:edit, :update, :destroy]
 
   def new
-    @project   = project.new
+    @project = Project.new
   end
 
   def create
-    @project      = project.new project_params
-    @project.user = current_user
+    @project         = Project.new project_params
+    @project.profile = @profile
+    @project.user    = current_user
     if @project.save
-      redirect_to profile_path(@profile), notice: "project created!"
+      redirect_to profile_path(@profile), notice: "Project Created!"
     else
-      flash[:alert] = "See errors below"
+      flash[:alert]  = "See errors below"
       render :new
     end
   end
@@ -25,15 +25,16 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update project_params
-      redirect_to profile_path(@profile), notice: "project updated!"
+      redirect_to profile_path(@profile), notice: "Project Updated!"
     else
+      flash[:alert] = "See Errors Below"
       render :edit
     end
   end
 
   def destroy
     @project.destroy
-    redirect_to profile_path(@profile), notice: "project deleted!"
+    redirect_to profile_path(@profile), notice: "Project Deleted!"
   end
 
   private
@@ -43,7 +44,7 @@ class ProjectsController < ApplicationController
   end
 
   def find_project
-    @project = project.find(params[:id])
+    @project = Project.find(params[:id])
   end
 
   def project_params
@@ -53,4 +54,10 @@ class ProjectsController < ApplicationController
                                      :weblink,
                                      :sourcecode])
   end
+
+  def authorize!
+    redirect_to root_path, alert: "Access Denied"
+    unless can? :manage, @project
+  end
+
 end

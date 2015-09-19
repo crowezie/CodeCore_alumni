@@ -1,19 +1,21 @@
 class AssetsController < ApplicationController
-  before_action  :find_profile, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  before_action :find_profile
+  before_action :find_asset, only: [:edit, :update, :destroy]
   before_action :authorize!, only: [:edit, :update, :destroy]
 
-
   def new
+    @asset = Asset.new
   end
 
   def create
-    @asset              = Asset.new(asset_params)
-    @asset.profile      = @profile
+    @asset          = Asset.new asset_params
+    @asset.profile  = @profile
+    @asset.user     = current_user
     if @asset.save
-      redirect_to profile_path(@profile), notice: "Saved"
+      redirect_to profile_path(@profile), notice: "Asset Created!"
     else
-      flash[:alert]     = "See Errors Below"
+      flash[:alert] = "See Errors Below"
       render :new
     end
   end
@@ -23,25 +25,33 @@ class AssetsController < ApplicationController
 
   def update
     if @asset.update asset_params
-      redirect_to profile_path(@asset), notice: "Saved"
+      redirect_to profile_path(@profile), notice: "Asset Updated!"
     else
       flash[:alert] = "See Errors Below"
+      render :edit
     end
   end
 
   def destroy
     @asset.destroy
-    redirect_to profiles_path, alert: "Asset Deleted"
+    redirect_to profile_path(@profile), alert: "Asset Deleted"
   end
 
   private
 
-  def asset_params
-    params.require(:asset).permit([:linkedin, :github, :twitter, :resume])
+  def find_profile
+    @profile = Profile.find params[:profile_id]
   end
 
-  def find_profile
-    @profile         = Profile.find params[:profile_id]
+  def find_asset
+    @asset   = Asset.find(params[:id])
+  end
+
+  def asset_params
+    params.require(:asset).permit([:linkedin,
+                                   :github,
+                                   :twitter,
+                                   :resume])
   end
 
   def authorize!
@@ -49,5 +59,4 @@ class AssetsController < ApplicationController
     unless can? :manage, @asset
   end
 
-  #ability in can 
 end
