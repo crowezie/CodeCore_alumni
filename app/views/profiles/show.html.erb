@@ -78,6 +78,7 @@
 </div>
 
 <div>
+  
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" style="margin-bottom:10px" role="tablist">
 
@@ -96,42 +97,41 @@
 
   </ul>
 
+
+
   <!-- Tab panes -->
   <div class="tab-content margined-tab-content">
 
+      <!-- SKILLS TAB -->
       <div role="tabpanel" class="tab-pane active" id="skills">
-
-          <!-- Skills go here -->
           <% @profile_skills.each do |skill| %>
             <%= render partial: 'skills_profile_show', locals: {skill:skill} %>
           <% end %>
-
       </div>
 
+
+      <!-- PROJECTS TAB -->
       <div role="tabpanel" class="tab-pane" id="projects">
+        <% @profile_projects.each do |project| %>
+          <%= render partial: 'projects_profile_show', locals: {project:project}%>
 
-          <!-- Projects go here -->
-
-          <%= render 'projects_profile_show'%>
-
-
+        <% end %>     
       </div>
 
+
+      <!-- EDUCATION TAB -->
       <div role="tabpanel" class="tab-pane" id="education">
-          <!-- Education goes here -->
-
           <%= render 'education_profile_show'%>
-
       </div>
 
+
+
+      <!-- EXPERIENCE TAB -->
       <div role="tabpanel" class="tab-pane" id="experience">
-
-
-          <!-- Experience goes here -->
-
           <%= render 'experience_profile_show'%>
-
       </div>
+
+
 
   </div>
 
