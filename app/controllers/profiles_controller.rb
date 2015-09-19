@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+
   before_action :authenticate_user!, except: [:show, :index]
   before_action :find_profile, only: [:show, :edit, :update, :destroy]
 
@@ -50,7 +51,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-  params.require(:profile).permit([:description, :availability, :pitch, :image, :phone, :email, :location])
+    params.require(:profile).permit([:description, :availability, :pitch, :image, :phone, :email, :location])
   end
 
   def find_profile
