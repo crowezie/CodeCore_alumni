@@ -23,8 +23,9 @@
       <div role="tabpanel" class="tab-pane active" id="skills">
          
           <!-- Skills go here -->
-
-          <%= render 'skills_profile_show'%>
+          <% @profile_skills.each do |skill| %>
+            <%= render partial: 'skills_profile_show', locals: {skill:skill} %>
+          <% end %>
 
       </div>
 
