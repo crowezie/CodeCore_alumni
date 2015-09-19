@@ -24,7 +24,8 @@ class ProfilesController < ApplicationController
 
 
   def show
-    @profile_skills = @profile.skills
+    @profile_skills   = @profile.skills
+    @profile_projects = @profile.projects
   end
 
   def index

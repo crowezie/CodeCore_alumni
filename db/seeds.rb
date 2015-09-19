@@ -33,6 +33,19 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
   userskills.each do |x|
     user.profile.skills.create(name: x, level: rand(0...10))
   end
-  
+
+  # create x number of projects for each profile
+  (1..(rand(2..10))).each do |project|
+    user.profile.projects.create(
+      title: Faker::Company.catch_phrase,
+      description: Faker::Lorem.paragraph,
+      logo_project: Faker::Avatar.image,
+      weblink: Faker::Internet.url('example.com'),
+      sourcecode: Faker::Internet.url('example.com')
+      )
+  end
 
 end
+
+
+
