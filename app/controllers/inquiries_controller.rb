@@ -1,7 +1,7 @@
 class InquiriesController < ApplicationController
 
   before_action :find_profile
-  before_action :find_skill, only: [:show, :edit, :update, :destroy]
+  before_action :find_inquiry, only: [:show, :edit, :update, :destroy]
 
   def new
     @inquiry  = Inquiry.new
