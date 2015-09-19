@@ -24,6 +24,7 @@ class ProfilesController < ApplicationController
 
 
   def show
+    @profile_skills = @profile.skills
   end
 
   def index
