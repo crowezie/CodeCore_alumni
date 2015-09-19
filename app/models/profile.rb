@@ -1,7 +1,12 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
 
-  has_many :educations
+  has_many :skills, dependent: :nullify
+  has_many :educations, dependent: :nullify
+  has_many :assets, dependent: :nullify
+  has_many :experiences, dependent: :nullify
+  has_many :projects, dependent: :nullify
+  has_many :inquiries, dependent: :nullify
 
   mount_uploader :image, ImageUploader
 
