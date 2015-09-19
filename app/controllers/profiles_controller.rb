@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
-  before_action :authenticate_user!, except: [:show, :index]
+  # before_action :authenticate_user!, except: [:show, :index]
   before_action :find_profile, only: [:show, :edit, :update, :destroy]
 
   before_action :authorize!, only: [:edit, :update, :destroy]
