@@ -45,6 +45,16 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
       )
   end
 
+
+  # Create one admin user
+  User.create(
+    first_name:      "Codecore",
+    last_name:       "Admin",
+    email:           "codecore@codecore.com",
+    password:        "supersecret",
+    admin:           true
+  )
+
 end
 
 
