@@ -16,7 +16,7 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
     first_name:      Faker::Name.first_name,
     last_name:       Faker::Name.last_name,
     email:           Faker::Internet.email,
-    password_digest: BCrypt::Password.create("password")
+    password:        BCrypt::Password.create("password")
   )
   user.profile = Profile.create(
     description:  Faker::Lorem.paragraph,
