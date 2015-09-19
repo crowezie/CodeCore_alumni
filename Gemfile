@@ -38,6 +38,7 @@ gem "bootstrap-sass"
 gem 'mini_magick'
 gem 'faker'
 
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
