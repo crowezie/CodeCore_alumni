@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_one :profile
+  after_initialize :set_defaults
 
   validates :email, presence: true, uniqueness: true,
   format: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
@@ -21,4 +22,13 @@ class User < ActiveRecord::Base
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
   end
+
+  private
+  
+  def set_defaults
+    self.admin ||= false
+    self.approved ||= false
+  end
+
+
 end

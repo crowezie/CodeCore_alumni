@@ -6,13 +6,5 @@ class Inquiry < ActiveRecord::Base
   format: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :message, presence: true
 
-  after_initialize :set_defaults
-
-private
-
-  def set_defaults
-    self.admin ||= false
-    self.approved ||= false
-  end
 
 end
