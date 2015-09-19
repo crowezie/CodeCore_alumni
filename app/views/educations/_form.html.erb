@@ -1,0 +1,10 @@
+<div class="container" id="education_form"> 
+  <%= simple_form_for [@profile, @education] do |f| %>
+    <%= f.input :school_name, label: "School" %>
+    <%= f.input :year_from, label: "Year Start" %>
+    <%= f.input :year_to, label: "Year End" %>
+    <%= f.input :degree, "Degree Held" %>
+    <%= f.input :logo %>
+    <%= f.submit %>
+  <% end %>
+</div>
