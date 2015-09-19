@@ -8,6 +8,16 @@
         </ul>
         </div>
           <ul class="nav navbar-nav navbar-right">
+
+            <li>
+              <%= form_tag profiles_path, method: :get, class: "navbar-form" do |f|%>
+                <p>
+                  <%= search_field_tag :search, params[:search] %>
+                  <%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
+                </p>
+              <% end %>
+            </li>
+
             <% if user_signed_in? %>
             <li><%= link_to edit_users_path do %>
               Hello <%= current_user.first_name %>

@@ -20,6 +20,11 @@ class Profile < ActiveRecord::Base
 
   after_initialize :set_defaults
 
+  def self.search(item)
+    search_term = "%#{item}%"
+    User.where(["first_name ILIKE :term OR last_name ILIKE :term", {term: search_term}])
+  end
+
   private
 # Is the email method necessary, if we auto fill from controller? I think yes since the user could delete email and this way it doesn't need to be validated again
   def set_defaults

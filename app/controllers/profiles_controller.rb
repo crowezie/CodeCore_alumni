@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
   end
 
   def index
-    @profiles = Profile.all
+    @profiles     = Profile.search(params[:search])
   end
 
   def edit
