@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919210138) do
+ActiveRecord::Schema.define(version: 20150919214802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20150919210138) do
     t.integer  "year_from"
     t.integer  "year_to"
     t.string   "degree"
-    t.string   "logo"
+    t.string   "logo_education"
     t.integer  "profile_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "educations", ["profile_id"], name: "index_educations_on_profile_id", using: :btree
@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(version: 20150919210138) do
     t.string   "company"
     t.text     "description"
     t.string   "weblink"
-    t.string   "logo"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "logo_experience"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "profile_id"
   end
 
@@ -83,11 +83,11 @@ ActiveRecord::Schema.define(version: 20150919210138) do
   create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "logo"
+    t.string   "logo_project"
     t.string   "weblink"
     t.string   "sourcecode"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "profile_id"
   end
 
