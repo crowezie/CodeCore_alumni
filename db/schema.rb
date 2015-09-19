@@ -11,10 +11,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919005908) do
+ActiveRecord::Schema.define(version: 20150919214802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assets", force: :cascade do |t|
+    t.string   "linkedin"
+    t.string   "github"
+    t.string   "twitter"
+    t.string   "resume"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "profile_id"
+  end
+
+  add_index "assets", ["profile_id"], name: "index_assets_on_profile_id", using: :btree
+
+  create_table "educations", force: :cascade do |t|
+    t.string   "school_name"
+    t.integer  "year_from"
+    t.integer  "year_to"
+    t.string   "degree"
+    t.string   "logo_education"
+    t.integer  "profile_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "educations", ["profile_id"], name: "index_educations_on_profile_id", using: :btree
+
+  create_table "experiences", force: :cascade do |t|
+    t.string   "position"
+    t.string   "company"
+    t.text     "description"
+    t.string   "weblink"
+    t.string   "logo_experience"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "profile_id"
+  end
+
+  add_index "experiences", ["profile_id"], name: "index_experiences_on_profile_id", using: :btree
+
+  create_table "inquiries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "profile_id"
+  end
+
+  add_index "inquiries", ["profile_id"], name: "index_inquiries_on_profile_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.text     "description"
@@ -31,16 +80,47 @@ ActiveRecord::Schema.define(version: 20150919005908) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
+  create_table "projects", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "logo_project"
+    t.string   "weblink"
+    t.string   "sourcecode"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "profile_id"
+  end
+
+  add_index "projects", ["profile_id"], name: "index_projects_on_profile_id", using: :btree
+
+  create_table "skills", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "profile_id"
+  end
+
+  add_index "skills", ["profile_id"], name: "index_skills_on_profile_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
+  add_foreign_key "assets", "profiles"
+  add_foreign_key "educations", "profiles"
+  add_foreign_key "experiences", "profiles"
+  add_foreign_key "inquiries", "profiles"
   add_foreign_key "profiles", "users"
+  add_foreign_key "projects", "profiles"
+  add_foreign_key "skills", "profiles"
 end
