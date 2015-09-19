@@ -14,3 +14,5 @@
 
 # Ignore uploads from carrierwave
 /public/uploads/*
+
+/config/initializers/app_keys.rb

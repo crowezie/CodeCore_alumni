@@ -2,10 +2,13 @@ Rails.application.routes.draw do
 
   root "profiles#index"
 
-  resources :inquiries
-
   resources :profiles do
-    resources :educations, only: [:create, :index]
+    resources :educations, only: [:create, :update, :destroy]
+    resources :experiences, only: [:create, :update, :destroy]
+    resources :assets, only: [:create, :update, :destroy]
+    resources :skills, only: [:create, :update, :destroy]
+    resources :projects, only: [:create, :update, :destroy]
+    resources :inquiries
   end
 
 resources :users, only: [:new, :create] do
