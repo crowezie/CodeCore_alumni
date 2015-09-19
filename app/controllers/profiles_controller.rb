@@ -6,24 +6,52 @@ class ProfilesController < ApplicationController
   before_action :authorize!, only: [:edit, :update, :destroy]
 
   def new
+    # Is this line necessary?
+    @user = current_user
+    @profile = Profile.new(email: @user.email)
+  end
+
+  def create
+    @profile = Profile.new(profile_params)
+    @profile.user = current_user
+    if @profile.save
+      redirect_to profile_path(@profile), notice: "Profile created!"
+    else
+      flash[:alert] = "See errors"
+      render :new
+    end
+  end
+
+
+  def show
+
   end
 
   def index
-  end
-
-  def show
+    @profiles = Profile.all
   end
 
   def edit
   end
 
   def update
+    if @profile.update profile_params
+      redirect_to profile_path(@profile)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    # Double check authorize method to make sure it covers destroy and update
+      @profile.destroy
+      redirect_to profiles_path, alert: "Profile Deleted"
   end
 
   private
 
   def profile_params
-    profile_params = params.require(:profile).permit([:description, :availability, :pitch, :image, :phone, :email, :location])
+    params.require(:profile).permit([:description, :availability, :pitch, :image, :phone, :email, :location])
   end
 
   def find_profile
