@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
 
+
+  resources :profiles do
+    resources :educations, only: [:create, :index]
+  end
+
+
+  resources :users, only: [:new, :create]
+
+
   root "profiles#index"
   resources :profiles
     resources :educations
