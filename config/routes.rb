@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :inquiries
   root "profiles#index"
   resources :profiles
   resources :users, only: [:new, :create] do
