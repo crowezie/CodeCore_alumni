@@ -1,6 +1,8 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
 
+  has_many :educations
+
   mount_uploader :image, ImageUploader
 
 
