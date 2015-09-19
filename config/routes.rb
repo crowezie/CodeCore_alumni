@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
 
-  resources :inquiries
   root "profiles#index"
-  resources :profiles
-  resources :users, only: [:new, :create] do
-    collection do
-      get   :edit
-      patch :update
-    end
+
+  resources :inquiries
+
+  resources :profiles do
+    resources :educations, only: [:create, :index]
   end
-  resources :sessions, only: [:new, :create] do
-    delete :destroy, on: :collection
+
+resources :users, only: [:new, :create] do
+  collection do
+    get   :edit
+    patch :update
   end
+end
+
+resources :sessions, only: [:new, :create] do
+  delete :destroy, on: :collection
+end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
