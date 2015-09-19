@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root "profiles#index"
 
   resources :profiles do
@@ -22,6 +23,8 @@ resources :sessions, only: [:new, :create] do
   delete :destroy, on: :collection
 end
 
+resources :password_resets
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
