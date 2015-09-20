@@ -1,8 +1,10 @@
-<%= simple_form_for [@profile, @experience] do |f| %>
+<%= simple_form_for @profile do |p| %>
+  <%= p.simple_fields_for :experiences, @profile.experiences.build do |f| %>
   <%= f.input :position, label: "Position" %>
   <%= f.input :company, label: "Company" %>
   <%= f.input :description, label: "Description" %>
   <%= f.input :weblink, label: "Web Link" %>
   <%= f.input :logo_experience, label: "Experience Logo" %>
-  <%= f.submit "Submit", class: "btn btn-info" %>
+  <% end %>
+  <%= p.submit "Submit", class: "btn btn-info" %>
 <% end %>

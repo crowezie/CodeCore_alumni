@@ -1,5 +1,7 @@
-<%= simple_form_for [@profile, @skill] do |f| %>
-  <%= builder.input :name, label: "Name", placeholder: 'e.g. Ruby on Rails' %>
-  <%= builder.input :level, label: "Level", placeholder: '1 - 10' %>
-  <%= builder.submit "Submit", class: "btn btn-info" %>
+<%= simple_form_for @profile do |p| %>
+  <%= p.simple_fields_for :skills, @profile.skills.build do |f| %>
+  <%= f.input :name, label: "Name", placeholder: 'e.g. Ruby on Rails' %>
+  <%= f.input :level, label: "Level", placeholder: '1 - 10' %>
+  <% end %>
+  <%= p.submit "Submit", class: "btn btn-info" %>
 <% end %>

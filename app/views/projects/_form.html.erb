@@ -1,5 +1,5 @@
 <%= simple_form_for @profile do |p| %>
-  <%= p.simple_fields_for :projects_attributes, @profile.projects.build do |f| %>
+  <%= p.simple_fields_for :projects, @profile.projects.build do |f| %>
   <%= f.input :title, label: "Title" %>
   <%= f.input :description, label: "Description" %>
   <%= f.input :weblink, label: "Web Link" %>
