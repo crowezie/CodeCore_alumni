@@ -8,6 +8,5 @@ class Experience < ActiveRecord::Base
   validates :company, presence: true
   validates :description, presence: true, length: {maximum: 500}
   validates :weblink, presence: true
-  validates :logo
 
 end
