@@ -1,10 +1,10 @@
-<div class="container" id="education_form"> 
-  <%= simple_form_for [@profile, @education] do |f| %>
-    <%= f.input :school_name, label: "School" %>
-    <%= f.input :year_from, label: "Year Start" %>
-    <%= f.input :year_to, label: "Year End" %>
-    <%= f.input :degree, "Degree Held" %>
-    <%= f.input :logo %>
-    <%= f.submit %>
+<%= simple_form_for @profile do |f| %>
+  <%= f.fields_for :educations do |builder| %>
+    <%= builder.input :school_name, label: "School", placeholder: 'e.g. CodeCore' %>
+    <%= builder.input :year_from, label: "Year Start" %>
+    <%= builder.input :year_to, label: "Year End" %>
+    <%= builder.input :degree, label: "Degree Held", placeholder: 'e.g. Computer Science' %>
+    <%= builder.input :logo_education, label: "School Logo" %>
+    <%= builder.submit "Submit", class: "btn btn-info" %>
   <% end %>
-</div>
+<% end %>

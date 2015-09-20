@@ -36,7 +36,6 @@ gem 'carrierwave'
 gem 'letter_opener', :group => :development
 gem "bootstrap-sass"
 gem 'mini_magick'
-gem 'faker'
 gem 'owlcarousel-rails'
 
 # Use Unicorn as the app server
