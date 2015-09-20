@@ -7,7 +7,11 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Account created, signed in"
+      admins =  User.where(admin: true)
+      admins.each do |admin|
+        UserMailer.notify_admin(admin).deliver
+      end
+      redirect_to root_path, notice: "Account   created, signed in"
     else
       flash[:alert] = "See errors below"
       render :new
@@ -20,8 +24,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
+    approved_already = @user.approved
     if @user.update(user_params)
+      if approved_already != @user.approved && @user.approved!=nil
+        #if approved_already does NOTEQ to approved AND nil THEN send email
+        UserMailer.notify_users(@user).deliver
+      end
       redirect_to users_path
     else
       flash[:alert] = "Cannot modify"
