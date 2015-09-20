@@ -34,7 +34,11 @@ class ProfilesController < ApplicationController
   end
 
   def index
-    @profiles = Profile.all
+    if params[:search] == "awesome"
+      @profiles = Profile.all
+    else
+      @profiles = Profile.where("availability = ?", true)
+    end
   end
 
   def edit
