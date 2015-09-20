@@ -9,7 +9,7 @@
 
 skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
 
-# generates 100 users, with corresponding profiles and skills
+# generates 100 users, with corresponding profiles, skills, projects, educations
 100.times do
   user =
   User.create(
@@ -46,6 +46,25 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
   end
 
 
+  # create x number of educations for each profile
+
+  year_from = rand(1900...Date.today.strftime("%Y").to_i)
+  year_to   = year_from+rand(1...10)
+
+  (1..(rand(2..5))).each do |education|
+    user.profile.educations.create(
+      school_name:     Faker::Company.name,
+      year_from:       year_from,
+      year_to:         year_to,  
+      degree:          Faker::Commerce.department,
+      logo_education:  Faker::Avatar.image
+      )
+  end
+
+end
+
+
+
   # Create one admin user
   User.create(
     first_name:      "Codecore",
@@ -55,7 +74,21 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
     admin:           true
   )
 
-end
 
+  
+
+
+
+
+  # create_table "experiences", force: :cascade do |t|
+  #   t.string   "position"
+  #   t.string   "company"
+  #   t.text     "description"
+  #   t.string   "weblink"
+  #   t.string   "logo_experience"
+  #   t.datetime "created_at",      null: false
+  #   t.datetime "updated_at",      null: false
+  #   t.integer  "profile_id"
+  # end
 
 
