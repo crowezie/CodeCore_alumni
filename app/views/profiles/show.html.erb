@@ -83,7 +83,11 @@
 
       <!-- EDUCATION TAB -->
       <div role="tabpanel" class="tab-pane" id="education">
-          <%= render 'education_profile_show'%>
+        <% @profile_educations.each do |education| %>
+          <%= render partial: 'education_profile_show', locals: {
+            education:education}%>
+        <%end%>
+
       </div>
 
 
