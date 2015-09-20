@@ -20,12 +20,6 @@ class Profile < ActiveRecord::Base
 
   after_initialize :set_defaults
 
-  accepts_nested_attributes_for :assets
-  accepts_nested_attributes_for :projects
-  accepts_nested_attributes_for :educations
-  accepts_nested_attributes_for :experiences
-  accepts_nested_attributes_for :skills
-
   private
 # Is the email method necessary, if we auto fill from controller? I think yes since the user could delete email and this way it doesn't need to be validated again
   def set_defaults

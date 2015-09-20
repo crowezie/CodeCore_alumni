@@ -10,12 +10,6 @@ class ProfilesController < ApplicationController
     # Is this line necessary?
     @user = current_user
     @profile = Profile.new(email: @user.email)
-
-    @asset      = @profile.assets.build
-    @project    = @profile.projects.build
-    @education  = @profile.educations.build
-    @experience = @profile.experiences.build
-    @skill      = @profile.skills.build
   end
 
   def create
