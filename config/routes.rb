@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :inquiries
   end
 
-resources :users, only: [:new, :create, :index] do
+resources :users, only: [:new, :create, :index, :update] do
   collection do
     get   :edit
     patch :update

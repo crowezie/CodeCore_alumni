@@ -17,10 +17,10 @@
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><%= user.email %></td>
-        <td><%= link_to "approve", users_path(user, {user: {approved: true}}),
+        <td><%= link_to "approve", user_path(user.id, {user: {approved: true}}),
                                          class: "btn btn-default",
                                          method: :patch%>
-        <%= link_to "disapprove",users_path(user, {user: {approved: false}}),
+        <%= link_to "disapprove",user_path(user.id, {user: {approved: false}}),
                                          class: "btn btn-default",
                                          method: :patch%>
         </td>
