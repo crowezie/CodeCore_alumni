@@ -11,13 +11,24 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
 
 # generates 100 users, with corresponding profiles, skills, projects, educations
 100.times do
+
+  # 50% change of user being approved or not
+  chance = rand(2)
+  if chance ==0
+    approved_value = false
+  else
+    approved_value = true
+  end 
+
   user =
   User.create(
     first_name:      Faker::Name.first_name,
     last_name:       Faker::Name.last_name,
     email:           Faker::Internet.email,
-    password:        BCrypt::Password.create("password")
+    password:        "supersecret",
+    approved:        approved_value
   )
+
   user.profile = Profile.create(
     description:  Faker::Lorem.paragraph,
     availability: true,
@@ -62,6 +73,7 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
       logo_education:  Faker::Avatar.image
       )
   end
+
 
 
   # create x number of experiences for each profile
