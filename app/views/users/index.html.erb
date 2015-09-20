@@ -8,6 +8,7 @@
           <th>First Name</th>
           <th>Last Name</th>
           <th>Email</th>
+          <th>Time Created</th>
           <th>ACTION</th>
         </tr>
       </thead>
@@ -17,12 +18,30 @@
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><%= user.email %></td>
-        <td><%= link_to "approve", user_path(user.id, {user: {approved: true}}),
+        <td><%= formatted_date(user.created_at) %></td>
+        <td>
+        <% if user.approved == nil %>
+        <%= link_to "approve", user_path(user.id, {user: {approved: true}}),
                                          class: "btn btn-default",
                                          method: :patch%>
         <%= link_to "disapprove",user_path(user.id, {user: {approved: false}}),
                                          class: "btn btn-default",
                                          method: :patch%>
+          <% elsif user.approved == true %>
+        <%= link_to "approve", user_path(user.id, {user: {approved: nil}}),
+                                         class: "btn btn-success",
+                                         method: :patch%>
+        <%= link_to "disapprove",user_path(user.id, {user: {approved: false}}),
+                                         class: "btn btn-default",
+                                         method: :patch%>
+          <% else %>
+        <%= link_to "approve", user_path(user.id, {user: {approved: true}}),
+                                         class: "btn btn-default",
+                                         method: :patch%>
+        <%= link_to "disapprove",user_path(user.id, {user: {approved: nil}}),
+                                         class: "btn btn-danger",
+                                         method: :patch%>
+        <% end %>
         </td>
         <% end %>
       </tr>

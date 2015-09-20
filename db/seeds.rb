@@ -18,7 +18,7 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
     approved_value = false
   else
     approved_value = true
-  end 
+  end
 
   user =
   User.create(
@@ -68,7 +68,7 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
     user.profile.educations.create(
       school_name:     Faker::Company.name,
       year_from:       year_from,
-      year_to:         year_to,  
+      year_to:         year_to,
       degree:          Faker::Commerce.department,
       logo_education:  Faker::Avatar.image
       )
@@ -83,7 +83,7 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
     user.profile.experiences.create(
       position:         Faker::Name.title,
       company:          Faker::Company.name,
-      description:      Faker::Lorem.paragraph,  
+      description:      Faker::Lorem.paragraph,
       weblink:          Faker::Internet.url,
       logo_experience:  Faker::Avatar.image
       )
@@ -100,6 +100,3 @@ end
     password:        "supersecret",
     admin:           true
   )
-
-
-

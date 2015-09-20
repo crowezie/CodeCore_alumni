@@ -24,10 +24,9 @@ class User < ActiveRecord::Base
   end
 
   private
-  
+
   def set_defaults
     self.admin ||= false
-    self.approved ||= false
   end
 
 
