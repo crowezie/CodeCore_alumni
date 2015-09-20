@@ -3,7 +3,7 @@ class Profile < ActiveRecord::Base
 
   has_many :skills, dependent: :nullify
   has_many :educations, dependent: :nullify
-  has_many :assets, dependent: :nullify
+  has_one :asset, dependent: :nullify
   has_many :experiences, dependent: :nullify
   has_many :projects, dependent: :nullify
   has_many :inquiries, dependent: :nullify
@@ -16,6 +16,12 @@ class Profile < ActiveRecord::Base
                     length: {maximum: 140}
 
   validates :email, format: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
+  accepts_nested_attributes_for :asset
+  accepts_nested_attributes_for :projects
+  accepts_nested_attributes_for :educations
+  accepts_nested_attributes_for :experiences
+  accepts_nested_attributes_for :skills
 
 
   after_initialize :set_defaults

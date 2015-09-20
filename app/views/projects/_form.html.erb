@@ -1,8 +1,10 @@
-<%= simple_form_for [@profile, @project] do |f| %>
+<%= simple_form_for @profile do |p| %>
+  <%= p.simple_fields_for :projects_attributes, @profile.projects.build do |f| %>
   <%= f.input :title, label: "Title" %>
   <%= f.input :description, label: "Description" %>
   <%= f.input :weblink, label: "Web Link" %>
   <%= f.input :sourcecode, label: "Source Code" %>
   <%= f.input :logo_project, label: "Project Logo" %>
-  <%= f.submit "Submit", class: "btn btn-info" %>
+  <% end %>
+  <%= p.submit "Submit", class: "btn btn-info" %>
 <% end %>

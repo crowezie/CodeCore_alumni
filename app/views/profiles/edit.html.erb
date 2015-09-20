@@ -54,7 +54,7 @@
                         </a>
                     </li>
 
-                     
+
 
                     <li role="presentation" class="disabled">
                         <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
@@ -86,8 +86,8 @@
                                 <%#= f.input :location, label: "Location", placeholder: 'e.g. Vancouver, BC, Canada' %>
                                 <%#= f.input :availability, inline_label: 'I am Available for hire! :)' %>
                                 <%#= f.input :image, label: "Photo" %>
-                                
-  
+
+
                         <%#=  render "basic_information_profile_new" %>
 
                         <ul class="list-inline pull-right">
@@ -108,11 +108,10 @@
                         <h3>Step 2</h3>
                         <p>Links</p>
 
-                    <%= simple_form_for @assets do |f| %>
 
-                  <%=  render partial: "assets/form", locals: {f:f} %>
+                  <%=  render partial: "assets/form" %>
 
-                    <%end%>
+
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
@@ -136,7 +135,7 @@
                         <h3>Step 4</h3>
                         <p>Education</p>
 
-                        <%=  render "educations/form" %>
+                        <%#=  render "educations/form" %>
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
@@ -148,7 +147,7 @@
                         <h3>Step 5</h3>
                         <p>Experience</p>
 
-                        <%=  render "experiences/form" %>
+                        <%#=  render "experiences/form" %>
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
@@ -160,7 +159,7 @@
                         <h3>Step 6</h3>
                         <p>Skills</p>
 
-                        <%=  render "skills/form" %>
+                        <%#=  render "skills/form" %>
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>

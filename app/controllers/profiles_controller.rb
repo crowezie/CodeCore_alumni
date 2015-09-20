@@ -62,7 +62,9 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit([:description, :availability, :pitch, :image, :phone, :email, :location])
+    params.require(:profile).permit(:description, :availability, :pitch, :image, :phone, :email, :location,
+    asset_attributes: [:linkedin, :github, :twitter, :resume],
+    projects_attributes:  [:title, :description, :logo_project, :weblink, :sourcecode] )
   end
 
   def find_profile
