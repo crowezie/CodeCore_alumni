@@ -89,5 +89,9 @@ end
     admin:           true
   )
 
+<<<<<<< HEAD
+end
+=======
 
 
+>>>>>>> bb14b49d902f44832b431403f3ef95bf9f7eff8c
