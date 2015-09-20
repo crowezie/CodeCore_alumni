@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
 
   before_action :authenticate_user!, except: [:show, :index]
   before_action :find_profile, only: [:show, :edit, :update, :destroy]
+  before_action :find_profile_attributes, only: [:show]
 
   before_action :authorize!, only: [:edit, :update, :destroy]
 
@@ -30,10 +31,6 @@ class ProfilesController < ApplicationController
 
 
   def show
-    @profile_skills      = @profile.skills
-    @profile_projects    = @profile.projects
-    @profile_educations  = @profile.educations
-    @profile_experiences = @profile.experiences
   end
 
   def index
@@ -65,6 +62,13 @@ class ProfilesController < ApplicationController
 
   def find_profile
     @profile = Profile.find params[:id]
+  end
+
+  def find_profile_attributes
+    @profile_skills      = @profile.skills
+    @profile_projects    = @profile.projects
+    @profile_educations  = @profile.educations
+    @profile_experiences = @profile.experiences
   end
 
   def authorize!
