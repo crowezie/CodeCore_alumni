@@ -1,0 +1,10 @@
+<%= simple_form_for @profile do |f| %>
+  <%= f.fields_for :experiences do |builder| %>
+    <%= builder.input :position, label: "Position" %>
+    <%= builder.input :company, label: "Company" %>
+    <%= builder.input :description, label: "Description" %>
+    <%= builder.input :weblink, label: "Web Link" %>
+    <%= builder.input :logo_experience, label: "Experience Logo" %>
+    <%= builder.submit "Submit", class: "btn btn-info" %>
+  <% end %>
+<% end %>

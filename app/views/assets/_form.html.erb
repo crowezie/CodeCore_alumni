@@ -1,0 +1,9 @@
+<%= simple_form_for @profile do |f| %>
+  <%= f.fields_for :assets do |builder| %>
+    <%= builder.input :linkedin, label: "Linkedin" %>
+    <%= builder.input :github, label: "GitHub" %>
+    <%= builder.input :twitter, label: "Twitter" %>
+    <%= builder.input :resume, label: "Resume" %>
+    <%= builder.submit "Submit", class: "btn btn-info" %>
+  <% end %>
+<% end %>
