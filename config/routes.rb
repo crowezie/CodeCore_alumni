@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  root "profiles#index"
+  root 'welcomes#index'
 
   resources :profiles do
     resources :educations, only: [:create, :update, :destroy]
