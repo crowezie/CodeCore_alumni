@@ -45,7 +45,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    binding.pry
+    # binding.pry
     if @profile.update profile_params
       redirect_to profile_path(@profile)
     else
