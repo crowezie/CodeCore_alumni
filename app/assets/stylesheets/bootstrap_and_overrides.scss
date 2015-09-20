@@ -5,16 +5,12 @@
 
 
 // primary button, button hover
-.btn-primary{
+.btn-danger{
   background: none;
   color:#BE142F;
-  border:2px solid #BE142F;
+  border:1px solid #BE142F;
   border-radius: 0px;
-}
-.btn-primary:hover{
-  background-color: #BE142F;
-  color:white;
-  border:2px solid #BE142F;
+  opacity: 0.8;
 }
 
 // link, link hover
@@ -26,11 +22,7 @@ a:hover{
 }
 
 
-// progress bar 
+// progress bar
 .progress-bar{
   background-color: #BE142F
 }
-
-
-
-

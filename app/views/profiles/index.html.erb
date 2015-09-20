@@ -1,41 +1,13 @@
-<div id="carousel" class="owl-carousel">
-  <% @profiles.where(availability: :true).each do |p| %>
-    <div class="thumbnail">
-      <% if p.image.present? %>
-				<% profile_image = p.image.url() %>
-			<% else %>
-				<% profile_image = asset_path('codecore-logo.jpg') %>
-			<% end %>
-      <%= image_tag profile_image, class:"img-thumbnail" %>
-
-      <div class="caption" style="height: 200px">
-        <h3><%= "#{p.user.first_name} #{p.user.last_name}" %></h3>
-        <hr>
-        <p><%= "#{p.pitch}" %></p>
-      </div>
-        <%= link_to "#{fa_icon('search')} View".html_safe, profile_path(p), class: "btn btn-primary btn-group-justified fa-lg" %>
-    </div>
-  <% end %>
-</div>
-<div class="customNavigation btn-group btn-group-justified" role="group" aria-label="...">
-  <div class="btn-group">
-    <button type="button" class="btn btn-primary prev fa-lg"><%= fa_icon("backward") %></button>
-  </div>
-  <div class="btn-group">
-    <button type="button" class="btn btn-primary next fa-lg"><%= fa_icon("forward") %></button>
-  </div>
-</div>
-
 <script>
   $(document).ready(function() {
     var owl = $("#carousel");
 
     owl.owlCarousel({
-        items : 4, //10 items above 1000px browser width
-        itemsDesktop : [1000,2], //5 items between 1000px and 901px
-        itemsDesktopSmall : [900,1], // betweem 900px and 601px
-        itemsTablet: [600,1], //2 items between 600 and 0
-        itemsMobile : false // itemsMobile disabled - inherit from itemsTablet option
+        items : 5, //10 items above 1000px browser width
+        itemsDesktop : [1000,4], //5 items between 1000px and 901px
+        itemsDesktopSmall : [900,3], // betweem 900px and 601px
+        itemsTablet: [600,2], //2 items between 600 and 0
+        itemsMobile: [400,1] // itemsMobile disabled - inherit from itemsTablet option
     });
 
     // Custom Navigation Events
@@ -45,7 +17,44 @@
     $(".prev").click(function(){
       owl.trigger('owl.prev');
     })
+  // $(".owl-carousel").owlCarousel();
   });
-
-  $(".owl-carousel").owlCarousel();
 </script>
+<div style="background-color: black">
+  <div id="carousel" class="owl-carousel">
+    <% logo_array = %w(no_avatar1.jpg no_avatar2.png madoka-on-nyan.gif) %>
+    <% google_maps_search = "http://maps.google.com/?q=" %>
+    <% @profiles.where(availability: :true).each do |p| %>
+      <div class="thumbnail">
+        <% if p.image.present? %>
+  				<% profile_image = p.image.url() %>
+  			<% else %>
+  				<% profile_image = asset_path(logo_array.sample) %>
+  			<% end %>
+        <%= image_tag profile_image, class:"img-thumbnail img-responsive" %>
+
+        <div class="panel panel-default">
+          <div class="panel-heading centered">
+            <h3 class="panel-title"><%= "#{p.user.first_name} #{p.user.last_name}" %></h3>
+          </div>
+          <div class="panel-body pitch-div">
+            <%= "#{p.pitch}" %>
+          </div>
+          <div class="panel-footer centered">
+            <% locate_me = google_maps_search + p.location %>
+            <a href=<%= locate_me %>><%= "#{p.location}" %></a>
+          </div>
+        </div>
+        <%= link_to "#{fa_icon('search')} View".html_safe, profile_path(p), class: "btn btn-danger btn-block fa-lg" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="customNavigation btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger prev fa-lg"><%= fa_icon("backward") %></button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger next fa-lg"><%= fa_icon("forward") %></button>
+    </div>
+  </div>
+</div>
