@@ -48,10 +48,12 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
 
   # create x number of educations for each profile
 
-  year_from = rand(1900...Date.today.strftime("%Y").to_i)
-  year_to   = year_from+rand(1...10)
 
   (1..(rand(2..5))).each do |education|
+
+    year_from = rand(1900...Date.today.strftime("%Y").to_i)
+    year_to   = year_from+rand(1...10)
+
     user.profile.educations.create(
       school_name:     Faker::Company.name,
       year_from:       year_from,
@@ -61,8 +63,21 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
       )
   end
 
-end
 
+  # create x number of experiences for each profile
+
+  (1..(rand(2..5))).each do |experience|
+
+    user.profile.experiences.create(
+      position:         Faker::Name.title,
+      company:          Faker::Company.name,
+      description:      Faker::Lorem.paragraph,  
+      weblink:          Faker::Internet.url,
+      logo_experience:  Faker::Avatar.image
+      )
+  end
+
+end
 
 
   # Create one admin user
@@ -74,21 +89,5 @@ end
     admin:           true
   )
 
-
-  
-
-
-
-
-  # create_table "experiences", force: :cascade do |t|
-  #   t.string   "position"
-  #   t.string   "company"
-  #   t.text     "description"
-  #   t.string   "weblink"
-  #   t.string   "logo_experience"
-  #   t.datetime "created_at",      null: false
-  #   t.datetime "updated_at",      null: false
-  #   t.integer  "profile_id"
-  # end
 
 

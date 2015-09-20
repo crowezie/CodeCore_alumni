@@ -94,7 +94,9 @@
 
       <!-- EXPERIENCE TAB -->
       <div role="tabpanel" class="tab-pane" id="experience">
-          <%= render 'experience_profile_show'%>
+        <% @profile_experiences.each do |experience| %>
+          <%= render partial: 'experience_profile_show', locals: {experience: experience} %>
+        <% end %>
       </div>
 
 
