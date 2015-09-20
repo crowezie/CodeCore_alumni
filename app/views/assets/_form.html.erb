@@ -1,9 +1,10 @@
-<%= simple_form_for @profile do |f| %>
-  <%= f.fields_for :assets do |builder| %>
-    <%= builder.input :linkedin, label: "Linkedin" %>
-    <%= builder.input :github, label: "GitHub" %>
-    <%= builder.input :twitter, label: "Twitter" %>
-    <%= builder.input :resume, label: "Resume" %>
-    <%= builder.submit "Submit", class: "btn btn-info" %>
+<%= simple_form_for @profile do |p| %>
+  <%= p.simple_fields_for :asset_attributes do |f| %>
+  <%= f.input        :linkedin, label: "Linkedin" %>
+  <%= f.input        :github, label: "GitHub" %>
+  <%= f.input        :twitter, label: "Twitter" %>
+  <%= f.input        :resume, label: "Resume" %>
+  <%#= f.hidden_field :profile_id, value: current_user.profile.id %>
   <% end %>
-<% end %>
+  <%= p.submit "Submit", class: "btn btn-info" %>
+<%end%>

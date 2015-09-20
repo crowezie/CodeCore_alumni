@@ -9,9 +9,11 @@ class AssetsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @asset          = Asset.new asset_params
-    @asset.profile  = @profile
-    @asset.user     = current_user
+    @asset.profile  = current_user.profile
+    # @asset.profile  = @profile
+    # @asset.user     = current_user
     if @asset.save
       redirect_to profile_path(@profile), notice: "Asset Created!"
     else

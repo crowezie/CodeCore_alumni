@@ -10,19 +10,17 @@ class ProfilesController < ApplicationController
     # Is this line necessary?
     @user = current_user
     @profile = Profile.new(email: @user.email)
-
-    @asset      = @profile.assets.build
-    @project    = @profile.projects.build
-    @education  = @profile.educations.build
-    @experience = @profile.experiences.build
-    @skill      = @profile.skills.build
   end
 
   def create
     @profile = Profile.new(profile_params)
     @profile.user = current_user
     if @profile.save
-      redirect_to profile_path(@profile), notice: "Profile created!"
+      # respond_to do |format|
+      # format.html{}# redirect_to profile_path(@profile), notice: "Profile created!"
+      # format.js{ render js: "alert('created!!')"}
+      # end
+      redirect_to edit_profile_path(@profile), notice: "created !"
     else
       flash[:alert] = "See errors"
       render :new
@@ -42,9 +40,12 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    # binding.pry
+    @profile = current_user.profile
   end
 
   def update
+    # binding.pry
     if @profile.update profile_params
       redirect_to profile_path(@profile)
     else
@@ -61,7 +62,13 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit([:description, :availability, :pitch, :image, :phone, :email, :location])
+
+    params.require(:profile).permit(:description, :availability, :pitch, :image, :phone, :email, :location,
+    asset_attributes: [:linkedin, :github, :twitter, :resume],
+    projects_attributes:  [:title, :description, :logo_project, :weblink, :sourcecode],
+    educations_attributes:  [:school_name, :year_from, :year_to, :degree, :logo_education],
+    experiences_attributes:  [:position, :company, :description, :weblink, :logo_experience],
+    skills_attributes:  [:name, :level] )
   end
 
   def find_profile

@@ -1,10 +1,10 @@
-<%= simple_form_for @profile do |f| %>
-  <%= f.fields_for :educations do |builder| %>
-    <%= builder.input :school_name, label: "School", placeholder: 'e.g. CodeCore' %>
-    <%= builder.input :year_from, label: "Year Start" %>
-    <%= builder.input :year_to, label: "Year End" %>
-    <%= builder.input :degree, label: "Degree Held", placeholder: 'e.g. Computer Science' %>
-    <%= builder.input :logo_education, label: "School Logo" %>
-    <%= builder.submit "Submit", class: "btn btn-info" %>
+<%= simple_form_for @profile do |p| %>
+  <%= p.simple_fields_for :educations, @profile.educations.build do |f| %>
+  <%= f.input :school_name, label: "School", placeholder: 'e.g. CodeCore' %>
+  <%= f.input :year_from, label: "Year Start" %>
+  <%= f.input :year_to, label: "Year End" %>
+  <%= f.input :degree, label: "Degree Held", placeholder: 'e.g. Computer Science' %>
+  <%= f.input :logo_education, label: "School Logo" %>
   <% end %>
+  <%= p.submit "Submit", class: "btn btn-info" %>
 <% end %>
