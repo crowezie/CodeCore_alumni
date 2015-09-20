@@ -9,6 +9,9 @@
         </div>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
+              <% if current_user.admin == true %>
+            <li><%= link_to "Admin", users_path %></li>
+              <% end %>
             <li><%= link_to edit_users_path do %>
               Hello <%= current_user.first_name %>
             <% end %></li>
