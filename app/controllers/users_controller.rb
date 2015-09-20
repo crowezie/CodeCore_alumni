@@ -7,7 +7,11 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Account created, signed in"
+      admins =  User.where(admin: true)
+      admins.each do |admin|
+        UserMailer.notify_admin(admin).deliver
+      end
+      redirect_to root_path, notice: "Account   created, signed in"
     else
       flash[:alert] = "See errors below"
       render :new

@@ -10,8 +10,8 @@ def create
   else
   redirect_to root_url, :alert => "No user exist"
   end
-end
 
+end
 def edit
   @user = User.find_by_password_reset_token!(params[:id])
 end
