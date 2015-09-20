@@ -24,8 +24,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
+    approved_already = @user.approved
     if @user.update(user_params)
+      if approved_already != @user.approved && @user.approved!=nil
+        #if approved_already does NOTEQ to approved AND nil THEN send email
+        UserMailer.notify_users(@user).deliver
+      end
       redirect_to users_path
     else
       flash[:alert] = "Cannot modify"

@@ -15,4 +15,9 @@ class UserMailer < ApplicationMailer
     mail :to => user.email, :subject => "New user been created"
   end
 
+  def notify_users(user)
+    @user   = user
+    mail(to: @user.email, subject: "CodeCore Alumni")
+  end
+
 end
