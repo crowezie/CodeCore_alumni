@@ -16,7 +16,7 @@
  *= require owl.theme
  */
 
- #owl-demo .item{
+ #carousel .item{
    background: #3fbf79;
    padding: 30px 0px;
    margin: 10px;
@@ -25,6 +25,7 @@
    -moz-border-radius: 3px;
    border-radius: 3px;
    text-align: center;
+   margin-right: 10px;
  }
  .customNavigation{
    text-align: center;
