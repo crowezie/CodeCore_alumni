@@ -78,21 +78,26 @@
                         <h3>Step 1</h3>
                         <p>Basic Information</p>
 
-                            <%= simple_form_for @profile do |f| %>
-                                <%= f.input :pitch, label: "Pitch", placeholder: '140 characters Pitch' %>
-                                <%= f.input :description, label: "Description" %>
-                                <%= f.input :phone, label: "Phone" %>
-                                <%= f.input :email, label: "Email" %>
-                                <%= f.input :location, label: "Location", placeholder: 'e.g. Vancouver, BC, Canada' %>
-                                <%= f.input :availability, inline_label: 'I am Available for hire! :)' %>
-                                <%= f.input :image, label: "Photo" %>
+                            <%#= simple_form_for @profile do |f| %>
+                                <%#= f.input :pitch, label: "Pitch", placeholder: '140 characters Pitch' %>
+                                <%#= f.input :description, label: "Description" %>
+                                <%#= f.input :phone, label: "Phone" %>
+                                <%#= f.input :email, label: "Email" %>
+                                <%#= f.input :location, label: "Location", placeholder: 'e.g. Vancouver, BC, Canada' %>
+                                <%#= f.input :availability, inline_label: 'I am Available for hire! :)' %>
+                                <%#= f.input :image, label: "Photo" %>
+
+
+                        <%#=  render "basic_information_profile_new" %>
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default next-step">Skip</button></li>
                             <li>
 
-                    <%= f.button :submit, "Save and continue", class: "btn btn-primary next-step"%>
-                            <%end%>
+
+                    <%#= f.button :submit, "Save and continue", class: "btn btn-primary next-step"%>
+                            <%#end%>
+
                                <!--  <button type="button" class="btn btn-primary next-step">Save and continue</button> -->
 
 
@@ -103,7 +108,10 @@
                         <h3>Step 2</h3>
                         <p>Links</p>
 
-                        <%#=  render "assets/form" %>
+
+                  <%=  render partial: "assets/form" %>
+
+
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
@@ -115,7 +123,7 @@
                         <h3>Step 3</h3>
                         <p>Projects</p>
 
-                        <%#=  render "projects/form" %>
+                        <%=  render "projects/form" %>
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
@@ -127,7 +135,7 @@
                         <h3>Step 4</h3>
                         <p>Education</p>
 
-                        <%#=  render "educations/form" %>
+                        <%=  render "educations/form" %>
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
@@ -139,7 +147,7 @@
                         <h3>Step 5</h3>
                         <p>Experience</p>
 
-                        <%#=  render "experiences/form" %>
+                        <%=  render "experiences/form" %>
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
@@ -151,7 +159,7 @@
                         <h3>Step 6</h3>
                         <p>Skills</p>
 
-                        <%#=  render "skills/form" %>
+                        <%=  render "skills/form" %>
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>

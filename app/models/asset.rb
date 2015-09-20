@@ -1,4 +1,5 @@
 class Asset < ActiveRecord::Base
+  belongs_to :profile
 
   mount_uploader :resume, ResumeUploader
 

@@ -1,10 +1,10 @@
-<%= simple_form_for @profile do |f| %>
-  <%= f.fields_for :projects do |builder| %>
-    <%= builder.input :title, label: "Title" %>
-    <%= builder.input :description, label: "Description" %>
-    <%= builder.input :weblink, label: "Web Link" %>
-    <%= builder.input :sourcecode, label: "Source Code" %>
-    <%= builder.input :logo_project, label: "Project Logo" %>
-    <%= builder.submit "Submit", class: "btn btn-info" %>
+<%= simple_form_for @profile do |p| %>
+  <%= p.simple_fields_for :projects, @profile.projects.build do |f| %>
+  <%= f.input :title, label: "Title" %>
+  <%= f.input :description, label: "Description" %>
+  <%= f.input :weblink, label: "Web Link" %>
+  <%= f.input :sourcecode, label: "Source Code" %>
+  <%= f.input :logo_project, label: "Project Logo" %>
   <% end %>
+  <%= p.submit "Submit", class: "btn btn-info" %>
 <% end %>
