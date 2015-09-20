@@ -16,7 +16,11 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user = current_user
     if @profile.save
-      redirect_to profile_path(@profile), notice: "Profile created!"
+      # respond_to do |format|
+      # format.html{}# redirect_to profile_path(@profile), notice: "Profile created!"
+      # format.js{ render js: "alert('created!!')"}
+      # end
+      redirect_to edit_profile_path(@profile), notice: "created !"
     else
       flash[:alert] = "See errors"
       render :new
@@ -36,9 +40,12 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    # binding.pry
+    @profile = current_user.profile
   end
 
   def update
+    binding.pry
     if @profile.update profile_params
       redirect_to profile_path(@profile)
     else
