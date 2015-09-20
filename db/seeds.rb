@@ -56,6 +56,3 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
   )
 
 end
-
-
-
