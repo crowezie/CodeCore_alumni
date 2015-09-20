@@ -32,7 +32,7 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
   user.profile = Profile.create(
     description:  Faker::Lorem.paragraph,
     availability: true,
-    pitch:        Faker::Lorem.sentences(1),
+    pitch:        Faker::Lorem.sentences[1],
     image:        Faker::Avatar.image,
     phone:        Faker::PhoneNumber.phone_number,
     email:        Faker::Internet.email,
