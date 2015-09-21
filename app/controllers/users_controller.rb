@@ -41,6 +41,7 @@ class UsersController < ApplicationController
         end
         format.html{ redirect_to users_path }
         format.js {render}
+      end
       redirect_to root_path
     else
       flash[:alert] = "Cannot modify"
