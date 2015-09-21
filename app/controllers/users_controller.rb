@@ -26,6 +26,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
   def update
     @user = User.find(params[:id])
     approved_already = @user.approved
@@ -37,7 +41,7 @@ class UsersController < ApplicationController
         end
         format.html{ redirect_to users_path }
         format.js {render}
-      end
+      redirect_to root_path
     else
       flash[:alert] = "Cannot modify"
       redirect_to users_path
