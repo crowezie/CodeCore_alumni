@@ -2,7 +2,7 @@
 
   <div class="footer-left">
 
-    <h3>CodeCore Alumni</h3>
+    <h3><%= image_tag "cca-logo.png" %></h3>
 
     <p class="footer-links">
       <a href="#">Home</a>
@@ -22,7 +22,7 @@
 
     <div class="footer-icons">
 
-      <a href="http://codecore.ca/"><i class="fa fa-facebook"></i></a>
+      <a href="https://www.facebook.com/CodeCoreBootcamp?fref=ts"><i class="fa fa-facebook"></i></a>
       <a href="https://twitter.com/CodeCoreYVR"><i class="fa fa-twitter"></i></a>
       <a href="https://www.linkedin.com/company/codecore-bootcamp"><i class="fa fa-linkedin"></i></a>
       <a href="https://github.com/CodeCoreYVR"><i class="fa fa-github"></i></a>
@@ -35,13 +35,13 @@
 
     <p>Contact Us</p>
 
-    <form action="#" method="post">
+      <%= form_tag "/contact_us", method: "post" do %>
 
-      <input type="text" name="email" placeholder="Email" />
-      <textarea name="message" placeholder="Message"></textarea>
-      <button>Send</button>
+        <input type="text" name="email" placeholder="Email" />
+        <textarea name="message" placeholder="Message"></textarea>
+        <button>Send</button>
 
-    </form>
+      <% end %>
 
   </div>
 

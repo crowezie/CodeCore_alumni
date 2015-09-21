@@ -12,13 +12,12 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
 # generates 100 users, with corresponding profiles, skills, projects, educations
 100.times do
 
-  # 50% change of user being approved or not
-  chance = rand(2)
-  if chance ==0
-    approved_value = false
-  else
-    approved_value = true
-  end
+  # 50% chance of user being approved or not
+  approved_value = rand(2) == 0
+  # 50% chance of user being available if they are approved
+  availability_value = rand(2) == 0 if approved_value
+  # Set availability to false if not approved
+  availability_value ||= approved_value
 
   user =
   User.create(
@@ -31,7 +30,7 @@ skills_array = ["Ruby", "HTML", "CSS", "Javascript", "Bootstrap"];
 
   user.profile = Profile.create(
     description:  Faker::Lorem.paragraph,
-    availability: true,
+    availability: availability_value,
     pitch:        Faker::Lorem.sentences[1],
     image:        Faker::Avatar.image,
     phone:        Faker::PhoneNumber.phone_number,

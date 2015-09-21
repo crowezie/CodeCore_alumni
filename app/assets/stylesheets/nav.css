@@ -1,0 +1,12 @@
+.navbar.navbar-default.navbar-fixed-top {
+  background-color: #BE142F;
+  height: 100px;
+}
+
+.nav.navbar-nav li a {
+  color: white;
+  line-height: 70px;
+  font-size: 18px;
+}
+
+body { padding-top: 100px; }
