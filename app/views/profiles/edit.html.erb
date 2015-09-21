@@ -86,8 +86,8 @@
                                 <%= f.input :email, label: "Email" %>
                                 <%= f.input :location, label: "Location", placeholder: 'e.g. Vancouver, BC, Canada' %>
                                 <%= f.label :"Avaiable for hire?"%>
-                                <%= f.input :availability, 
-                                    id: "availability_checkbox" %> 
+                                <%= f.input :availability,
+                                    id: "availability_checkbox" %>
                                 <%= f.input :image, label: "Photo" %>
                                 <%= image_tag @profile.image.url(:square) if @profile.image.present? %>
 
