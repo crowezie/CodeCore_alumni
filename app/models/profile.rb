@@ -17,11 +17,11 @@ class Profile < ActiveRecord::Base
 
   validates :email, format: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
-  accepts_nested_attributes_for :asset
-  accepts_nested_attributes_for :projects
-  accepts_nested_attributes_for :educations
-  accepts_nested_attributes_for :experiences
-  accepts_nested_attributes_for :skills
+  # accepts_nested_attributes_for :asset
+  # accepts_nested_attributes_for :projects
+  # accepts_nested_attributes_for :educations
+  # accepts_nested_attributes_for :experiences
+  # accepts_nested_attributes_for :skills
 
 
   after_initialize :set_defaults

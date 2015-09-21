@@ -57,8 +57,7 @@ class AssetsController < ApplicationController
   end
 
   def authorize!
-    redirect_to root_path, alert: "Access Denied"
-    unless can? :manage, @asset
+    redirect_to root_path, alert: "Access Denied" unless can? :manage, @asset
   end
 
 end
