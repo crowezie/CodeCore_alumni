@@ -87,6 +87,7 @@
                                 <%= f.input :location, label: "Location", placeholder: 'e.g. Vancouver, BC, Canada' %>
                                 <%= f.input :availability, inline_label: 'I am Available for hire! :)' %>
                                 <%= f.input :image, label: "Photo" %>
+                                <%= image_tag @profile.image.url(:square) if @profile.image.present? %>
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default next-step">Skip</button></li>
@@ -94,6 +95,7 @@
 
                     <%= f.button :submit, "Save and continue", class: "btn btn-primary"%>
                             <%end%>
+
 
 
                             </li>

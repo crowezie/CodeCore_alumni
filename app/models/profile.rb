@@ -12,6 +12,7 @@ class Profile < ActiveRecord::Base
   mount_uploader :logo_education, LogoEducationUploader
   mount_uploader :logo_experience, LogoExperienceUploader
   mount_uploader :logo_project, LogoProjectUploader
+  mount_uploader :resume, ResumeUploader
 
 
   validates :description, presence: true
