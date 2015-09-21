@@ -40,8 +40,10 @@ class UsersController < ApplicationController
         format.html { redirect_to root_path, notice: "Updated" }
         format.js { render }
         end
+        format.html{ redirect_to users_path }
+        format.js {render}
       end
-      redirect_to profiles_path
+      redirect_to root_path
     else
       respond_to do |format|
         format.html {redirect_to root_path, alert: "Cannot modify" }

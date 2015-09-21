@@ -126,18 +126,41 @@ background-color: #F1F1F1;
 .carousel-bg {
   background-image: url(/assets/code.png);
   background-size: 100%;
+  height: 510px;
   border-radius: 5px;
   opacity: 1;
 }
 
 .carousel-photo {
-  width: 216px;
-  height: 216px;
+  width: 218px;
+  height: 218px;
 }
 
 .pitch-div {
   height: 150px;
   overflow: scroll;
+}
+
+.inline {
+  height: 510px;
+}
+
+.top-most {
+  z-index: 1000;
+}
+
+.float-left {
+  position: absolute;
+  float: left;
+  left: 10px;
+  top: 100px;
+}
+
+.float-right {
+  position: absolute;
+  float: right;
+  right: 10px;
+  top: 100px;
 }
 
 .centered {
