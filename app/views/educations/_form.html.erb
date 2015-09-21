@@ -1,16 +1,20 @@
-<%= simple_form_for @profile, remote: true do |p| %>
-  <%= p.simple_fields_for :educations, @profile.educations.build do |f| %>
+  <%= simple_form_for [@profile, @profile.educations.build], remote: true do |f| %>
   <%= f.input :school_name, label: "School", placeholder: 'e.g. CodeCore' %>
   <%= f.input :year_from, label: "Year Start" %>
   <%= f.input :year_to, label: "Year End" %>
   <%= f.input :degree, label: "Degree Held", placeholder: 'e.g. Computer Science' %>
   <%= f.input :logo_education, label: "School Logo" %>
+  <%= f.button :submit, "Add Education", class: "btn btn-primary"%>
   <% end %>
-  <ul class="list-inline pull-right">
-  <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-  <li><button type="button" class="btn btn-default next-step">Skip</button></li>
-  <li>
-      <%= p.button :submit, "Save and continue", class: "btn btn-primary"%>
-  </li>
-  <%end%>
-  </ul>
+
+  <%#= simple_form_for @profile, remote: true do |p| %>
+    <ul class="list-inline pull-right">
+    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+    <li><button type="button" class="btn btn-default next-step">Skip</button></li>
+    <li>
+
+        <button type="button" class="btn btn-primary btn-info-full next-step">Continue</button>
+      <%#= p.button :submit, "Save and continue", class: "btn btn-primary"%>
+    </li>
+    <%#end%>
+    </ul>

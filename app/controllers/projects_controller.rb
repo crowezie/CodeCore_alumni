@@ -11,12 +11,21 @@ class ProjectsController < ApplicationController
   def create
     @project         = Project.new project_params
     @project.profile = @profile
-    @project.user    = current_user
-    if @project.save
-      redirect_to profile_path(@profile), notice: "Project Created!"
-    else
-      flash[:alert]  = "See errors below"
-      render :new
+    @project.profile.user = current_user
+
+    respond_to do |format|
+      if @project.save
+        format.html {
+          redirect_to profile_path(@profile), notice: "Project Created!"
+        }
+        format.js { render :project_create }
+      else
+        format.html {
+          flash[:alert] = "See errors below"
+          render :new
+        }
+        # format.js { render js: 'head :internal_server_error' }
+      end
     end
   end
 
@@ -56,8 +65,7 @@ class ProjectsController < ApplicationController
   end
 
   def authorize!
-    redirect_to root_path, alert: "Access Denied"
-    unless can? :manage, @project
+    redirect_to root_path, alert: "Access Denied" unless can? :manage, @project
   end
 
 end

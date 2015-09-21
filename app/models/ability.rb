@@ -11,6 +11,9 @@ class Ability
     can :manage, Profile do |profile|
       profile.user == user
     end
+  
+
+
 
     # Define abilities for the passed in user here. For example:
     #

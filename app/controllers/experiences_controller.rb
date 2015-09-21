@@ -11,12 +11,20 @@ class ExperiencesController < ApplicationController
   def create
     @experience          = Experience.new experience_params
     @experience.profile  = @profile
-    @experience.user     = current_user
+    @experience.profile.user     = current_user
     if @experience.save
-      redirect_to profile_path(@profile), notice: "Experience Created!"
+      respond_to do |format|
+      format.html {redirect_to profile_path(@profile), notice: "Experience Created!"}
+      format.js {render :experience_create}
+      end
     else
-      flash[:alert] = "See Errors Below"
-      render :new
+      respond_to do |format|
+        format.html {
+          flash[:alert] = "See Errors Below"
+          render :new
+        }
+        format.js {head :internal_server_error}
+      end
     end
   end
 
@@ -57,8 +65,7 @@ class ExperiencesController < ApplicationController
   end
 
   def authorize!
-    redirect_to root_path, alert: "Access Denied"
-    unless can? :manage, @experience
+    redirect_to root_path, alert: "Access Denied" unless can? :manage, @experience
   end
 
 end
