@@ -84,14 +84,17 @@
                                 <%= f.input :phone, label: "Phone" %>
                                 <%= f.input :email, label: "Email" %>
                                 <%= f.input :location, label: "Location", placeholder: 'e.g. Vancouver, BC, Canada' %>
-                                <%= f.input :availability, inline_label: 'I am Available for hire! :)' %>
+                                <%= f.label :'Available for hire?'%>
+                                <%= f.input :availability, 
+                                    id: "availability_checkbox" %>
+
                                 <%= f.input :image, label: "Photo" %>
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default next-step">Skip</button></li>
                             <li>
 
-                    <%= f.button :submit, "Save and continue", class: "btn btn-primary"%>
+                    <%= f.button :submit, "Save and continue", class: "btn btn-danger"%>
                             <%end%>
                                <!--  <button type="button" class="btn btn-primary next-step">Save and continue</button> -->
 
