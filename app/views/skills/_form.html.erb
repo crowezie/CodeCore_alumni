@@ -1,13 +1,12 @@
-<%= simple_form_for @profile, remote: true do |p| %>
-  <%= p.simple_fields_for :skills, @profile.skills.build do |f| %>
+  <%= simple_form_for [@profile, @profile.skills.build], remote: true do |f| %>
   <%= f.input :name, label: "Name", placeholder: 'e.g. Ruby on Rails' %>
   <%= f.input :level, label: "Level", placeholder: '1 - 10' %>
+  <%= f.button :submit, "Add a Skill", class: "btn btn-primary"%>
   <% end %>
   <ul class="list-inline pull-right">
   <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
   <li><button type="button" class="btn btn-default next-step">Skip</button></li>
   <li>
-  <%= p.button :submit, "Save and continue", class: "btn btn-primary"%>
+    <button type="button" class="btn btn-primary btn-info-full next-step">Continue</button>
   </li>
-  <%end%>
   </ul>
