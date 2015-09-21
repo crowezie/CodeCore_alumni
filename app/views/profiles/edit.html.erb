@@ -113,6 +113,8 @@
                         <p>Projects</p>
 
                         <%=  render "projects/form" %>
+                        <div class="clearfix">
+                        </div>
 
                         <% if @profile.projects.any?(&:persisted?) %>
                         <div id="all_projects">
@@ -129,6 +131,8 @@
                         <p>Education</p>
 
                         <%=  render "educations/form" %>
+                        <div class="clearfix">
+                        </div>
 
                         <% if @profile.educations.any?(&:persisted?) %>
                         <div id="all_education">
@@ -147,6 +151,8 @@
                         <p>Experience</p>
 
                         <%=  render "experiences/form" %>
+                        <div class="clearfix">
+                        </div>
 
                         <% if @profile.experiences.any?(&:persisted?) %>
                         <div id="all_experiences">
@@ -163,6 +169,10 @@
                         <p>Skills</p>
 
                         <%=  render "skills/form" %>
+                        <div class="clearfix">
+                        </div>
+
+
 
                         <% if @profile.skills.any?(&:persisted?) %>
                         <div id="all_skills">

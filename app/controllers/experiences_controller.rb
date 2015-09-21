@@ -11,7 +11,7 @@ class ExperiencesController < ApplicationController
   def create
     @experience          = Experience.new experience_params
     @experience.profile  = @profile
-    @experience.user     = current_user
+    @experience.profile.user     = current_user
     if @experience.save
       respond_to do |format|
       format.html {redirect_to profile_path(@profile), notice: "Experience Created!"}
