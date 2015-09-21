@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit([:title,
                                      :description,
-                                     :logo,
+                                     :logo_project,
                                      :weblink,
                                      :sourcecode])
   end

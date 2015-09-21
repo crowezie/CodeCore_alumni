@@ -60,7 +60,7 @@ class EducationsController < ApplicationController
                                         :year_from,
                                         :year_to,
                                         :degree,
-                                        :logo] )
+                                        :logo_education] )
   end
 
   def authorize!
