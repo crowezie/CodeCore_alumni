@@ -9,7 +9,17 @@ class ProfilesController < ApplicationController
   def new
     # Is this line necessary?
     @user = current_user
-    @profile = Profile.new(email: @user.email)
+    if current_user.approved == true
+      if current_user.profile
+        @profile = current_user.profile
+        redirect_to edit_profile_path(@profile)
+      else
+        @profile = Profile.new(email: @user.email)
+      end
+    else
+      redirect_to root_path, alert: "You have not approved yet"
+
+    end
   end
 
   def create
@@ -46,11 +56,14 @@ class ProfilesController < ApplicationController
 
   def update
     # binding.pry
+    respond_to do |format|
     if @profile.update profile_params
-      redirect_to profile_path(@profile)
+      format.html {redirect_to profile_path(@profile)}
+      format.js { render :update_continue }
     else
       render :edit
     end
+  end
   end
 
   def destroy

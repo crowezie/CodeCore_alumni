@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row">
     <section>
@@ -78,95 +79,97 @@
                         <h3>Step 1</h3>
                         <p>Basic Information</p>
 
-                            <%#= simple_form_for @profile do |f| %>
-                                <%#= f.input :pitch, label: "Pitch", placeholder: '140 characters Pitch' %>
-                                <%#= f.input :description, label: "Description" %>
-                                <%#= f.input :phone, label: "Phone" %>
-                                <%#= f.input :email, label: "Email" %>
-                                <%#= f.input :location, label: "Location", placeholder: 'e.g. Vancouver, BC, Canada' %>
-                                <%#= f.input :availability, inline_label: 'I am Available for hire! :)' %>
-                                <%#= f.input :image, label: "Photo" %>
-
-
-                        <%#=  render "basic_information_profile_new" %>
+                            <%= simple_form_for @profile, remote: true do |f| %>
+                                <%= f.input :pitch, label: "Pitch", placeholder: '140 characters Pitch' %>
+                                <%= f.input :description, label: "Description" %>
+                                <%= f.input :phone, label: "Phone" %>
+                                <%= f.input :email, label: "Email" %>
+                                <%= f.input :location, label: "Location", placeholder: 'e.g. Vancouver, BC, Canada' %>
+                                <%= f.input :availability, inline_label: 'I am Available for hire! :)' %>
+                                <%= f.input :image, label: "Photo" %>
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default next-step">Skip</button></li>
                             <li>
 
+                    <%= f.button :submit, "Save and continue", class: "btn btn-primary"%>
+                            <%end%>
 
-                    <%#= f.button :submit, "Save and continue", class: "btn btn-primary next-step"%>
-                            <%#end%>
 
-                               <!--  <button type="button" class="btn btn-primary next-step">Save and continue</button> -->
+
+
+
 
 
                             </li>
                         </ul>
                     </div>
+
                     <div class="tab-pane" role="tabpanel" id="step2">
                         <h3>Step 2</h3>
                         <p>Links</p>
 
-
                   <%=  render partial: "assets/form" %>
 
-
-
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-default next-step">Skip</button></li>
-                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
-                        </ul>
                     </div>
+
                     <div class="tab-pane" role="tabpanel" id="step3">
                         <h3>Step 3</h3>
                         <p>Projects</p>
 
                         <%=  render "projects/form" %>
 
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-default next-step">Skip</button></li>
-                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
-                        </ul>
+                        <% if @profile.projects.any?(&:persisted?) %>
+                          <% @profile.projects.each do |project| %>
+
+                            <%= render partial: 'projects_profile_show', locals: {project:project}%>
+                          <% end %>
+                        <% end %>
+
                     </div>
+
                     <div class="tab-pane" role="tabpanel" id="step4">
                         <h3>Step 4</h3>
                         <p>Education</p>
 
                         <%=  render "educations/form" %>
 
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-default next-step">Skip</button></li>
-                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
-                        </ul>
+                        <% if @profile.educations.any?(&:persisted?) %>
+                          <% @profile.educations.each do |education| %>
+                          <%= render partial: 'education_profile_show', locals: {education:education}%>
+                        <% end %>
+                        <% end %>
+
                     </div>
+
                     <div class="tab-pane" role="tabpanel" id="step5">
                         <h3>Step 5</h3>
                         <p>Experience</p>
 
                         <%=  render "experiences/form" %>
 
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-default next-step">Skip</button></li>
-                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
-                        </ul>
+                        <% if @profile.experiences.any?(&:persisted?) %>
+                          <% @profile.experiences.each do |experience| %>
+                          <%= render partial: 'experience_profile_show', locals: {experience:experience}%>
+                        <% end %>
+                        <% end %>
+
                     </div>
+
                     <div class="tab-pane" role="tabpanel" id="step6">
                         <h3>Step 6</h3>
                         <p>Skills</p>
 
                         <%=  render "skills/form" %>
 
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-default next-step">Skip</button></li>
-                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
-                        </ul>
+                        <% if @profile.skills.any?(&:persisted?) %>
+                          <% @profile.skills.each do |skill| %>
+                          <%= render partial: 'skills_profile_show', locals: {skill:skill}%>
+                        <% end %>
+                        <% end %>
+
                     </div>
+
                     <div class="tab-pane" role="tabpanel" id="complete">
                         <h3>Complete</h3>
                         <p>You have successfully completed all steps.</p>

@@ -1,7 +1,8 @@
 
-<div class="container">
+<div class="container student-table">
     <h2>Awaiting Requests</h2>
     <p>Student Requests waiting to get accepted</p>
+    <div>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -12,40 +13,11 @@
           <th>ACTION</th>
         </tr>
       </thead>
-    <tbody>
-      <% @users.each do |user| %>
-      <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.email %></td>
-        <td><%= formatted_date(user.created_at) %></td>
-        <td>
-        <% if user.approved == nil %>
-        <%= link_to "approve", user_path(user.id, {user: {approved: true}}),
-                                         class: "btn btn-default",
-                                         method: :patch%>
-        <%= link_to "disapprove",user_path(user.id, {user: {approved: false}}),
-                                         class: "btn btn-default",
-                                         method: :patch%>
-          <% elsif user.approved == true %>
-        <%= link_to "approve", user_path(user.id, {user: {approved: nil}}),
-                                         class: "btn btn-success",
-                                         method: :patch%>
-        <%= link_to "disapprove",user_path(user.id, {user: {approved: false}}),
-                                         class: "btn btn-default",
-                                         method: :patch%>
-          <% else %>
-        <%= link_to "approve", user_path(user.id, {user: {approved: true}}),
-                                         class: "btn btn-default",
-                                         method: :patch%>
-        <%= link_to "disapprove",user_path(user.id, {user: {approved: nil}}),
-                                         class: "btn btn-danger",
-                                         method: :patch%>
-        <% end %>
-        </td>
-        <% end %>
-      </tr>
+    <tbody id = "users">
+      <%= render @users %>
     </tbody>
   </table>
 </div>
-<%= paginate @users %>
+<div id="paginator">
+  <%= paginate @users, remote: true %>
+</div>
