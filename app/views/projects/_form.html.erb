@@ -1,4 +1,4 @@
-<%= simple_form_for @profile do |p| %>
+<%= simple_form_for @profile, remote: true do |p| %>
   <%= p.simple_fields_for :projects, @profile.projects.build do |f| %>
   <%= f.input :title, label: "Title" %>
   <%= f.input :description, label: "Description" %>
@@ -6,5 +6,11 @@
   <%= f.input :sourcecode, label: "Source Code" %>
   <%= f.input :logo_project, label: "Project Logo" %>
   <% end %>
-  <%= p.submit "Submit", class: "btn btn-info" %>
-<% end %>
+  <ul class="list-inline pull-right">
+  <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+  <li><button type="button" class="btn btn-default next-step">Skip</button></li>
+  <li>
+      <%= p.button :submit, "Save and continue", class: "btn btn-primary"%>
+  </li>
+  <%end%>
+  </ul>
