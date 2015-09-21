@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       admins.each do |admin|
         UserMailer.notify_admin(admin).deliver
       end
-        redirect_to root_path, notice: "Account   created, signed in"
+        redirect_to profiles_path, notice: "Account   created, signed in"
     else
       flash[:alert] = "See errors below"
       render :new
@@ -34,18 +34,21 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     approved_already = @user.approved
     if @user.update(user_params)
-      respond_to do |format|
-        if approved_already != @user.approved && @user.approved!=nil
-        #if approved_already does NOTEQ to approved AND nil THEN send email
-          UserMailer.notify_users(@user).deliver
+      if approved_already != @user.approved && @user.approved!=nil
+        respond_to do |format|#if approved_already does NOTEQ to approved AND nil THEN send email
+        UserMailer.notify_users(@user).deliver
+        format.html { redirect_to root_path, notice: "Updated" }
+        format.js { render }
         end
         format.html{ redirect_to users_path }
         format.js {render}
       end
       redirect_to root_path
     else
-      flash[:alert] = "Cannot modify"
-      redirect_to users_path
+      respond_to do |format|
+        format.html {redirect_to root_path, alert: "Cannot modify" }
+        format.js{ render }
+      end
     end
   end
 

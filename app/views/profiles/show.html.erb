@@ -27,10 +27,20 @@
 	<div class="row nav">
     <div class="col-md-4"></div>
     <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
+			<% if @profile.asset %>
+			<% if @profile.asset.linkedin %>
       <div class="col-md-3 col-xs-3 profile-well"><i class="fa fa-linkedin fa-lg"></i> </div>
+			<% end %>
+			<% if @profile.asset.twitter %>
       <div class="col-md-3 col-xs-3 profile-well"><i class="fa fa-tumblr fa-lg"></i> </div>
+			<% end %>
+			<% if @profile.asset.github %>
       <div class="col-md-3 col-xs-3 profile-well"><i class="fa fa-github fa-lg"></i> </div>
+			<% end %>
+			<% if @profile.asset.resume %>
       <div class="col-md-3 col-xs-3 profile-well"><i class="fa fa-download fa-lg"></i> Resume</div>
+			<% end %>
+			<% end %>
     </div>
   </div>
 </div>

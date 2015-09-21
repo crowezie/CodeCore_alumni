@@ -1,0 +1,5 @@
+$(document).ready( function() {
+  $("#all_skills").prepend("<%= j render partial: 'profiles/skills_profile_show', locals: { skill: @skill }%>, ");
+
+  $('#new_skill')[0].reset();
+});

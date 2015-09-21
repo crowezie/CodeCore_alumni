@@ -1,0 +1,5 @@
+$(document).ready( function() {
+  $("#all_projects").prepend("<%= j render partial: 'profiles/projects_profile_show', locals: { project: @project }%>, ");
+
+  $('#new_project')[0].reset();
+});

@@ -96,11 +96,6 @@
                             <%end%>
 
 
-
-
-
-
-
                             </li>
                         </ul>
                     </div>
@@ -118,12 +113,15 @@
                         <p>Projects</p>
 
                         <%=  render "projects/form" %>
+                        <div class="clearfix">
+                        </div>
 
                         <% if @profile.projects.any?(&:persisted?) %>
+                        <div id="all_projects">
                           <% @profile.projects.each do |project| %>
-
                             <%= render partial: 'projects_profile_show', locals: {project:project}%>
                           <% end %>
+                        </div>
                         <% end %>
 
                     </div>
@@ -133,12 +131,18 @@
                         <p>Education</p>
 
                         <%=  render "educations/form" %>
+                        <div class="clearfix">
+                        </div>
 
                         <% if @profile.educations.any?(&:persisted?) %>
+                        <div id="all_education">
+
                           <% @profile.educations.each do |education| %>
-                          <%= render partial: 'education_profile_show', locals: {education:education}%>
-                        <% end %>
-                        <% end %>
+
+                              <%= render partial: 'education_profile_show', locals: {education:education}%>
+                            <% end %>
+                          </div>
+                          <% end %>
 
                     </div>
 
@@ -147,11 +151,15 @@
                         <p>Experience</p>
 
                         <%=  render "experiences/form" %>
+                        <div class="clearfix">
+                        </div>
 
                         <% if @profile.experiences.any?(&:persisted?) %>
+                        <div id="all_experiences">
                           <% @profile.experiences.each do |experience| %>
                           <%= render partial: 'experience_profile_show', locals: {experience:experience}%>
                         <% end %>
+                      </div>
                         <% end %>
 
                     </div>
@@ -161,11 +169,17 @@
                         <p>Skills</p>
 
                         <%=  render "skills/form" %>
+                        <div class="clearfix">
+                        </div>
+
+
 
                         <% if @profile.skills.any?(&:persisted?) %>
+                        <div id="all_skills">
                           <% @profile.skills.each do |skill| %>
                           <%= render partial: 'skills_profile_show', locals: {skill:skill}%>
                         <% end %>
+                      </div>
                         <% end %>
 
                     </div>

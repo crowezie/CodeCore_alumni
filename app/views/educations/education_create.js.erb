@@ -1,0 +1,5 @@
+$(document).ready( function() {
+  $("#all_education").prepend("<%= j render partial: 'profiles/education_profile_show', locals: { education: @education }%>, ");
+
+  $('#new_education')[0].reset();
+});
