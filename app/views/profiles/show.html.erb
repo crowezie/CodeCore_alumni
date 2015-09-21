@@ -1,0 +1,118 @@
+<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+
+<div class="container profile-body" style="margin-top: 20px; margin-bottom: 20px;">
+	<div class="row panel">
+		<div class="col-md-4 profile-bg_blur ">
+      <% if @profile.availability %>
+        <%= link_to "Contact", new_profile_inquiry_path(@profile), class: "profile-follow_btn hidden-xs" %>
+     <% end %>
+		</div>
+    <div class="col-md-8  col-xs-12">
+			<% if @profile.image.present? %>
+				<% profile_image = @profile.image.url() %>
+			<% else %>
+				<% profile_image = asset_path('codecore-logo.jpg') %>
+			<% end %>
+		  <%= image_tag profile_image, class:"img-thumbnail profile-picture hidden-xs" %>
+		  <%= image_tag profile_image, class:"img-thumbnail profile-picture_mob visible-xs" %>
+
+			<div class="profile-header">
+		    <h1><%= "#{@profile.user.first_name} #{@profile.user.last_name}" %></h1>
+		    <% location = @profile.location.strip.length > 0 ? " from #{ @profile.location }" : "" %>
+		    <h4>Web Developer<%= location %></h4>
+		    <span><%= @profile.description %></span>
+			</div>
+    </div>
+  </div>
+	<div class="row nav">
+    <div class="col-md-4"></div>
+    <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
+			<% if @profile.asset %>
+			<% if @profile.asset.linkedin %>
+      <div class="col-md-3 col-xs-3 profile-well"><i class="fa fa-linkedin fa-lg"></i> </div>
+			<% end %>
+			<% if @profile.asset.twitter %>
+      <div class="col-md-3 col-xs-3 profile-well"><i class="fa fa-tumblr fa-lg"></i> </div>
+			<% end %>
+			<% if @profile.asset.github %>
+      <div class="col-md-3 col-xs-3 profile-well"><i class="fa fa-github fa-lg"></i> </div>
+			<% end %>
+			<% if @profile.asset.resume %>
+      <div class="col-md-3 col-xs-3 profile-well"><i class="fa fa-download fa-lg"></i> Resume</div>
+			<% end %>
+			<% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" style="margin-bottom:10px" role="tablist">
+
+      <li role="presentation" class="active">
+        <a href="#skills" aria-controls="skills" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> Skills </a>
+      </li>
+      <li role="presentation">
+        <a href="#projects" aria-controls="profile" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-folder-open"></span> Projects </a>
+      </li>
+      <li role="presentation">
+        <a href="#education" aria-controls="profile" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-education"></span> Education </a>
+      </li>
+      <li role="presentation">
+        <a href="#experience" aria-controls="profile" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-briefcase"></span> Experience </a>
+      </li>
+
+  </ul>
+
+
+
+  <!-- Tab panes -->
+  <div class="tab-content margined-tab-content">
+
+      <!-- SKILLS TAB -->
+      <div role="tabpanel" class="tab-pane active" id="skills">
+          <% @profile_skills.each do |skill| %>
+            <%= render partial: 'skills_profile_show', locals: {skill:skill} %>
+          <% end %>
+      </div>
+
+
+      <!-- PROJECTS TAB -->
+      <div role="tabpanel" class="tab-pane" id="projects">
+        <% @profile_projects.each do |project| %>
+          <%= render partial: 'projects_profile_show', locals: {project:project}%>
+
+        <% end %>
+      </div>
+
+
+      <!-- EDUCATION TAB -->
+      <div role="tabpanel" class="tab-pane" id="education">
+        <% @profile_educations.each do |education| %>
+          <%= render partial: 'education_profile_show', locals: {
+            education:education}%>
+        <%end%>
+
+      </div>
+
+
+
+      <!-- EXPERIENCE TAB -->
+      <div role="tabpanel" class="tab-pane" id="experience">
+        <% @profile_experiences.each do |experience| %>
+          <%= render partial: 'experience_profile_show', locals: {experience: experience} %>
+        <% end %>
+      </div>
+
+
+
+  </div>
+
+
+</div>

@@ -1,0 +1,19 @@
+<%= simple_form_for (@user||User.new) do |f| %>
+
+<%= f.input :first_name  %>
+<%= f.input :last_name  %>
+<%= f.input :email %>
+<% if @user.persisted? %>
+<%= f.input :current_password  %>
+<% end %>
+<%= f.input :password  %>
+<%= f.input :password_confirmation  %>
+<div class="form-group">
+  <%= f.submit "Sign Up", class: "btn btn-danger" %>
+</div>
+
+<% end %>
+
+<%= link_to "LOST YOUR PASSWORD?", new_password_reset_path %>
+<br>
+<%= link_to "SIGN IN", new_session_path %>

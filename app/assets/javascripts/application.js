@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require turbolinks
+//= require bootstrap-sprockets
+//= require owl.carousel
+//= require bootstrap-switch
 //= require_tree .

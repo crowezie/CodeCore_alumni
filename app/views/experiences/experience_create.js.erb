@@ -1,0 +1,5 @@
+$(document).ready( function() {
+  $("#all_experiences").prepend("<%= j render partial: 'profiles/experience_profile_show', locals: { experience: @experience }%>, ");
+
+  $('#new_experience')[0].reset();
+});

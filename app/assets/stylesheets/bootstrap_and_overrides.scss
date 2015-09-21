@@ -1,0 +1,26 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+@import "bootstrap3-switch";
+
+// primary button, button hover
+.btn-danger{
+  background: none;
+  color:#BE142F;
+  border:1px solid #BE142F;
+  border-radius: 0px;
+  opacity: 0.8;
+}
+
+// link, link hover
+a{
+  color: #BE142F
+}
+a:hover{
+  color: #BE142F
+}
+
+// progress bar
+.progress-bar{
+  background-color: #BE142F
+}

@@ -1,0 +1,15 @@
+<%= simple_form_for @profile, remote: true do |p| %>
+<%= p.simple_fields_for :asset_attributes do |f| %>
+  <%= f.input        :linkedin, label: "Linkedin" %>
+  <%= f.input        :github, label: "GitHub" %>
+  <%= f.input        :twitter, label: "Twitter" %>
+  <%= f.input        :resume, label: "Resume" %>
+<% end %>
+<ul class="list-inline pull-right">
+<li><button type="button" class="btn btn-danger prev-step">Previous</button></li>
+<li><button type="button" class="btn btn-danger next-step">Skip</button></li>
+<li>
+    <%= p.button :submit, "Save and continue", class: "btn btn-danger"%>
+</li>
+<%end%>
+</ul>

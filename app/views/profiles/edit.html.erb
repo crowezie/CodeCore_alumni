@@ -1,0 +1,202 @@
+
+<div class="container">
+  <div class="row">
+    <section>
+        <div class="wizard">
+            <div class="wizard-inner">
+                <div class="connecting-line"></div>
+                <ul class="nav nav-tabs" role="tablist">
+
+                    <li role="presentation" class="active">
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-info-sign"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-link"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-folder-open"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                     <li role="presentation" class="disabled">
+                        <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Step 4">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-education"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab" title="Step 5">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-briefcase"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#step6" data-toggle="tab" aria-controls="step6" role="tab" title="Step 6">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </span>
+                        </a>
+                    </li>
+
+
+
+                    <li role="presentation" class="disabled">
+                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-ok"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+
+
+
+            <div id="tab_section">
+
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="step1">
+
+                        <h3>Step 1</h3>
+                        <p>Basic Information</p>
+
+                            <%= simple_form_for @profile, remote: true do |f| %>
+                                <%= f.input :pitch, label: "Pitch", placeholder: '140 characters Pitch' %>
+                                <%= f.input :description, label: "Description" %>
+                                <%= f.input :phone, label: "Phone" %>
+                                <%= f.input :email, label: "Email" %>
+                                <%= f.input :location, label: "Location", placeholder: 'e.g. Vancouver, BC, Canada' %>
+                                <%= f.label :"Avaiable for hire?"%>
+                                <%= f.input :availability, 
+                                    id: "availability_checkbox" %> 
+                                <%= f.input :image, label: "Photo" %>
+                                <%= image_tag @profile.image.url(:square) if @profile.image.present? %>
+
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default next-step">Skip</button></li>
+                            <li>
+
+                    <%= f.button :submit, "Save and continue", class: "btn btn-danger"%>
+                            <%end%>
+
+
+
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-pane" role="tabpanel" id="step2">
+                        <h3>Step 2</h3>
+                        <p>Links</p>
+
+                  <%=  render partial: "assets/form" %>
+
+                    </div>
+
+                    <div class="tab-pane" role="tabpanel" id="step3">
+                        <h3>Step 3</h3>
+                        <p>Projects</p>
+
+                        <%=  render "projects/form" %>
+                        <div class="clearfix">
+                        </div>
+
+                        <% if @profile.projects.any?(&:persisted?) %>
+                        <div id="all_projects">
+                          <% @profile.projects.each do |project| %>
+                            <%= render partial: 'projects_profile_show', locals: {project:project}%>
+                          <% end %>
+                        </div>
+                        <% end %>
+
+                    </div>
+
+                    <div class="tab-pane" role="tabpanel" id="step4">
+                        <h3>Step 4</h3>
+                        <p>Education</p>
+
+                        <%=  render "educations/form" %>
+                        <div class="clearfix">
+                        </div>
+
+                        <% if @profile.educations.any?(&:persisted?) %>
+                        <div id="all_education">
+
+                          <% @profile.educations.each do |education| %>
+
+                              <%= render partial: 'education_profile_show', locals: {education:education}%>
+                            <% end %>
+                          </div>
+                          <% end %>
+
+                    </div>
+
+                    <div class="tab-pane" role="tabpanel" id="step5">
+                        <h3>Step 5</h3>
+                        <p>Experience</p>
+
+                        <%=  render "experiences/form" %>
+                        <div class="clearfix">
+                        </div>
+
+                        <% if @profile.experiences.any?(&:persisted?) %>
+                        <div id="all_experiences">
+                          <% @profile.experiences.each do |experience| %>
+                          <%= render partial: 'experience_profile_show', locals: {experience:experience}%>
+                        <% end %>
+                      </div>
+                        <% end %>
+
+                    </div>
+
+                    <div class="tab-pane" role="tabpanel" id="step6">
+                        <h3>Step 6</h3>
+                        <p>Skills</p>
+
+                        <%=  render "skills/form" %>
+                        <div class="clearfix">
+                        </div>
+
+
+
+                        <% if @profile.skills.any?(&:persisted?) %>
+                        <div id="all_skills">
+                          <% @profile.skills.each do |skill| %>
+                          <%= render partial: 'skills_profile_show', locals: {skill:skill}%>
+                        <% end %>
+                      </div>
+                        <% end %>
+
+                    </div>
+
+                    <div class="tab-pane" role="tabpanel" id="complete">
+                        <h3>Complete</h3>
+                        <p>You have successfully completed all steps.</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+   </div>
+</div>

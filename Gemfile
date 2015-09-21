@@ -32,12 +32,13 @@ gem 'kaminari', '~> 0.16.3'
 gem 'delayed_job_active_record'
 gem 'animate-rails'
 gem 'font-awesome-rails'
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'remotipart', '~> 1.2'
 gem 'letter_opener', :group => :development
 gem "bootstrap-sass"
 gem 'mini_magick'
-gem 'faker'
-
+gem 'owlcarousel-rails'
+gem "bootstrap-switch-rails"
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -48,6 +49,7 @@ gem 'faker'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry'
   gem 'rspec-rails', '~> 3.0'
   gem 'cowsay'
   gem 'interactive_editor'

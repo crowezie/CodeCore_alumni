@@ -1,0 +1,23 @@
+
+<div class="container student-table">
+    <h2>Awaiting Requests</h2>
+    <p>Student Requests waiting to get accepted</p>
+    <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Time Created</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+    <tbody id = "users">
+      <%= render @users %>
+    </tbody>
+  </table>
+</div>
+<div id="paginator">
+  <%= paginate @users, remote: true %>
+</div>

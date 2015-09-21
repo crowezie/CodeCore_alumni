@@ -1,0 +1,10 @@
+<p>Hello <%= @user.first_name %>,</p>
+<br>
+<% if @user.approved == true %>
+<p> You've been accepted </p>
+<br>
+<% else %>
+<p> I am sorry to inform you with our decision regarding your...</p>
+<% end %>
+<p>Regards,</p>
+<p>CodeCore</p>

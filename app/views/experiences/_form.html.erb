@@ -1,0 +1,15 @@
+  <%= simple_form_for [@profile, @profile.experiences.build], remote: true do |f| %>
+  <%= f.input :position, label: "Position" %>
+  <%= f.input :company, label: "Company" %>
+  <%= f.input :description, label: "Description" %>
+  <%= f.input :weblink, label: "Web Link" %>
+  <%= f.input :logo_experience, label: "Experience Logo" %>
+  <%= f.button :submit, "Add Experience", class: "btn btn-primary"%>
+  <% end %>
+  <ul class="list-inline pull-right">
+  <li><button type="button" class="btn btn-danger prev-step">Previous</button></li>
+  <li><button type="button" class="btn btn-danger next-step">Skip</button></li>
+  <li>
+      <button type="button" class="btn btn-danger btn-info-full next-step">Continue</button>
+  </li>
+  </ul>
