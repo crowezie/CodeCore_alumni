@@ -61,7 +61,7 @@ class ExperiencesController < ApplicationController
                                          :company,
                                          :description,
                                          :weblink,
-                                         :logo] )
+                                         :logo_experience] )
   end
 
   def authorize!

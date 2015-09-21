@@ -32,7 +32,8 @@ gem 'kaminari', '~> 0.16.3'
 gem 'delayed_job_active_record'
 gem 'animate-rails'
 gem 'font-awesome-rails'
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'remotipart', '~> 1.2'
 gem 'letter_opener', :group => :development
 gem "bootstrap-sass"
 gem 'mini_magick'

@@ -9,6 +9,9 @@ class Profile < ActiveRecord::Base
   has_many :inquiries, dependent: :nullify
 
   mount_uploader :image, ImageUploader
+  mount_uploader :logo_education, LogoEducationUploader
+  mount_uploader :logo_experience, LogoExperienceUploader
+  mount_uploader :logo_project, LogoProjectUploader
 
 
   validates :description, presence: true

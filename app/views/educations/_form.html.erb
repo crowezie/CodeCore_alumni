@@ -4,16 +4,16 @@
   <%= f.input :year_to, label: "Year End" %>
   <%= f.input :degree, label: "Degree Held", placeholder: 'e.g. Computer Science' %>
   <%= f.input :logo_education, label: "School Logo" %>
-  <%= f.button :submit, "Add Education", class: "btn btn-primary"%>
+  <%= f.button :submit, "Add Education", class: "btn btn-danger"%>
   <% end %>
 
   <%#= simple_form_for @profile, remote: true do |p| %>
     <ul class="list-inline pull-right">
-    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-    <li><button type="button" class="btn btn-default next-step">Skip</button></li>
+    <li><button type="button" class="btn btn-danger prev-step">Previous</button></li>
+    <li><button type="button" class="btn btn-danger next-step">Skip</button></li>
     <li>
 
-        <button type="button" class="btn btn-primary btn-info-full next-step">Continue</button>
+        <button type="button" class="btn btn-danger btn-info-full next-step">Continue</button>
       <%#= p.button :submit, "Save and continue", class: "btn btn-primary"%>
     </li>
     <%#end%>
