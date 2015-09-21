@@ -1,0 +1,36 @@
+<tr id="<%=dom_id(user)%>" class="student">
+  <td><%= user.first_name %></td>
+  <td><%= user.last_name %></td>
+  <td><%= user.email %></td>
+  <td><%= formatted_date(user.created_at) %></td>
+  <td>
+  <% if user.approved == nil %>
+  <%= link_to "approve", user_path(user.id, {user: {approved: true}}),
+                                   class: "btn btn-default",
+                                     id: "approved",
+                                   method: :patch, remote: true%>
+  <%= link_to "disapprove",user_path(user.id, {user: {approved: false}}),
+                                   class: "btn btn-default",
+                                     id: "disapproved",
+                                   method: :patch,remote: true%>
+    <% elsif user.approved == true %>
+  <%= link_to "approve", user_path(user.id, {user: {approved: nil}}),
+                                   class: "btn btn-success",
+                                     id: "approved",
+                                   method: :patch, remote: true%>
+  <%= link_to "disapprove",user_path(user.id, {user: {approved: false}}),
+                                   class: "btn btn-default",
+                                     id: "disapproved",
+                                   method: :patch,remote: true%>
+    <% else %>
+  <%= link_to "approve", user_path(user.id, {user: {approved: true}}),
+                                   class: "btn btn-default",
+                                     id: "approved",
+                                   method: :patch,remote: true%>
+  <%= link_to "disapprove",user_path(user.id, {user: {approved: nil}}),
+                                   class: "btn btn-danger",
+                                     id: "disapproved",
+                                   method: :patch,remote: true%>
+  <% end %>
+  </td>
+</tr>
