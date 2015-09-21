@@ -29,5 +29,4 @@ class User < ActiveRecord::Base
     self.admin ||= false
   end
 
-
 end
