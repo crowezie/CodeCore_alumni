@@ -14,4 +14,12 @@
  *= require_self
  *= require owl.carousel
  *= require owl.theme
+ *= require bootstrap3-switch
  */
+
+
+/*left-margin of the bootstrap switch in new, edit profiles page*/
+ 
+.profile_availability > div > label{
+  padding-left: 0px;
+}

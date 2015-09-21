@@ -23,7 +23,7 @@ class SkillsController < ApplicationController
         flash[:alert] = "See Errors Below"
         render :new
       }
-      # format.js {head :internal_server_error}
+      format.js {render js: ' alert("error")'}
       end
     end
   end

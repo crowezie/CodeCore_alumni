@@ -12,6 +12,7 @@ class Profile < ActiveRecord::Base
   mount_uploader :logo_education, LogoEducationUploader
   mount_uploader :logo_experience, LogoExperienceUploader
   mount_uploader :logo_project, LogoProjectUploader
+  mount_uploader :resume, ResumeUploader
 
 
   validates :description, presence: true
@@ -20,7 +21,7 @@ class Profile < ActiveRecord::Base
 
   validates :email, format: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
-  # accepts_nested_attributes_for :asset
+  accepts_nested_attributes_for :asset
   # accepts_nested_attributes_for :projects
   # accepts_nested_attributes_for :educations
   # accepts_nested_attributes_for :experiences
