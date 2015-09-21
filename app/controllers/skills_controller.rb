@@ -11,7 +11,7 @@ class SkillsController < ApplicationController
   def create
     @skill          = Skill.new skill_params
     @skill.profile  = @profile
-    @skill.user     = current_user
+    @skill.profile.user     = current_user
     if @skill.save
       respond_to do |format|
         format.html{redirect_to profile_path(@profile), notice: "Skill Created!"}
