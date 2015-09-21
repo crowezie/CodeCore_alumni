@@ -17,3 +17,7 @@
 <%= link_to "LOST YOUR PASSWORD?", new_password_reset_path %>
 <br>
 <%= link_to "SIGN IN", new_session_path %>
+<br>
+<% if @user.profile %>
+<%= link_to "EDIT PROFILE", edit_profile_path(@user.profile) %>
+<% end %>

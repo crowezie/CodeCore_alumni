@@ -4,6 +4,7 @@
   <%= f.input        :github, label: "GitHub" %>
   <%= f.input        :twitter, label: "Twitter" %>
   <%= f.input        :resume, label: "Resume" %>
+  <%= link_to "Current Resume", @profile.asset.resume.url if @profile.asset.resume.present? %>
 <% end %>
 <ul class="list-inline pull-right">
 <li><button type="button" class="btn btn-danger prev-step">Previous</button></li>
