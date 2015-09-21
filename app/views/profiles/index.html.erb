@@ -1,23 +1,10 @@
 <div id="carousel" class="owl-carousel">
-  <% @profiles.where(availability: :true).each do |p| %>
-    <div class="thumbnail">
-      <% if p.image.present? %>
-				<% profile_image = p.image.url() %>
-			<% else %>
-				<% profile_image = asset_path('codecore-logo.jpg') %>
-			<% end %>
-      <%= image_tag profile_image, class:"img-thumbnail" %>
-
-      <div class="caption" style="height: 200px">
-        <h3><%= "#{p.user.first_name} #{p.user.last_name}" %></h3>
-        <hr>
-        <p><%= "#{p.pitch}" %></p>
-      </div>
-        <%= link_to "#{fa_icon('search')} View".html_safe, profile_path(p), class: "btn btn-primary btn-group-justified fa-lg" %>
-    </div>
+  <% @profiles.each do |pro| %>
+    <%= render "/profiles/profile_min", pro: pro %>
   <% end %>
 </div>
 <div class="customNavigation btn-group btn-group-justified" role="group" aria-label="...">
+
   <div class="btn-group">
     <button type="button" class="btn btn-primary prev fa-lg"><%= fa_icon("backward") %></button>
   </div>
@@ -35,8 +22,9 @@
         itemsDesktop : [1000,2], //5 items between 1000px and 901px
         itemsDesktopSmall : [900,1], // betweem 900px and 601px
         itemsTablet: [600,1], //2 items between 600 and 0
-        itemsMobile : false // itemsMobile disabled - inherit from itemsTablet option
-    });
+        itemsMobile : false, // itemsMobile disabled - inherit from itemsTablet option
+        pagination : true
+      });
 
     // Custom Navigation Events
     $(".next").click(function(){
@@ -49,3 +37,4 @@
 
   $(".owl-carousel").owlCarousel();
 </script>
+<%= paginate @profiles %>

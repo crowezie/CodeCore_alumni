@@ -46,6 +46,8 @@ class ProfilesController < ApplicationController
       @profiles = Profile.all
     else
       @profiles = Profile.where("availability = ?", true)
+      @profiles = @profiles.page(params[:page]).per(20)
+
     end
   end
 

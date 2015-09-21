@@ -1,0 +1,15 @@
+<div class="thumbnail">
+  <% if pro.image.present? %>
+    <% profile_image = pro.image.url() %>
+  <% else %>
+    <% profile_image = asset_path('codecore-logo.jpg') %>
+  <% end %>
+  <%= image_tag profile_image, class:"img-thumbnail" %>
+
+  <div class="caption" style="height: 200px">
+    <h3><%= "#{pro.user.first_name} #{pro.user.last_name}" %></h3>
+    <hr>
+    <p><%= "#{pro.pitch}" %></p>
+  </div>
+    <%= link_to "#{fa_icon('search')} View".html_safe, profile_path(pro), class: "btn btn-primary btn-group-justified fa-lg" %>
+</div>
