@@ -1,0 +1,37 @@
+// Place all the styles related to the welcomes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.top-left {
+	position: absolute;
+  top: 30px;
+  left: 50px;
+}
+
+#homepage {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.content1 {
+	color: white;
+ 	font-size: 40px;
+	width: 700px;
+	margin: 0 auto;
+	padding-top: 20%;
+	display: inline-block;
+}
+
+.box {
+	width: 33%;
+}
+
+.homepage.btn {
+    border-radius: 24px;
+		background-color: transparent;
+		border-color: white;
+		border-width: 2px;
+		color: white;
+}
