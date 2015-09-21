@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       admins.each do |admin|
         UserMailer.notify_admin(admin).deliver
       end
-        redirect_to root_path, notice: "Account   created, signed in"
+        redirect_to profiles_path, notice: "Account   created, signed in"
     else
       flash[:alert] = "See errors below"
       render :new
