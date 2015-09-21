@@ -18,7 +18,8 @@
  */
 
 
-/*left-padding of the bootstrap switch in new profiles page*/
- #new_profile > div.form-group.boolean.optional.profile_availability > div > label{
+/*left-margin of the bootstrap switch in new, edit profiles page*/
+ 
+.profile_availability > div > label{
   padding-left: 0px;
- }
+}
