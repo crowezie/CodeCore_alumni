@@ -11,12 +11,20 @@ class SkillsController < ApplicationController
   def create
     @skill          = Skill.new skill_params
     @skill.profile  = @profile
-    @skill.user     = current_user
+    @skill.profile.user     = current_user
     if @skill.save
-      redirect_to profile_path(@profile), notice: "Skill Created!"
+      respond_to do |format|
+        format.html{redirect_to profile_path(@profile), notice: "Skill Created!"}
+        format.js {render :skill_create}
+      end
     else
-      flash[:alert] = "See Errors Below"
-      render :new
+      respond_to do |format|
+      format.html {
+        flash[:alert] = "See Errors Below"
+        render :new
+      }
+      # format.js {head :internal_server_error}
+      end
     end
   end
 
@@ -52,8 +60,7 @@ class SkillsController < ApplicationController
   end
 
   def authorize!
-    redirect_to root_path, alert: "Access Denied"
-    unless can? :manage, @skill
+    redirect_to root_path, alert: "Access Denied" unless can? :manage, @skill
   end
 
 end

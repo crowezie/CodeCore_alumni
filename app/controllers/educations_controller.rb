@@ -11,12 +11,20 @@ class EducationsController < ApplicationController
   def create
     @education          = Education.new education_params
     @education.profile  = @profile
-    @education.user     = current_user
+    @education.profile.user     = current_user
     if @education.save
-      redirect_to profile_path(@profile), notice: "Education Created!"
+      respond_to do |format|
+      format.html{redirect_to profile_path(@profile), notice: "Education Created!"}
+      format.js{render :education_create}
+      end
     else
-      flash[:alert] = "See Errors Below"
-      render :new
+      respond_to do |format|
+      format.html{
+        flash[:alert] = "See Errors Below"
+        render :new
+      }
+      format.js{ head :internal_server_error }
+      end
     end
   end
 
@@ -56,8 +64,7 @@ class EducationsController < ApplicationController
   end
 
   def authorize!
-    redirect_to root_path, alert: "Access Denied"
-    unless can? :manage, @education
+    redirect_to root_path, alert: "Access Denied" unless can? :manage, @education
   end
 
 end

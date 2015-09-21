@@ -1,16 +1,16 @@
-<%= simple_form_for @profile, remote: true do |p| %>
-  <%= p.simple_fields_for :projects, @profile.projects.build do |f| %>
+<%= simple_form_for [@profile, @profile.projects.build], remote: true do |f| %>
+
   <%= f.input :title, label: "Title" %>
   <%= f.input :description, label: "Description" %>
   <%= f.input :weblink, label: "Web Link" %>
   <%= f.input :sourcecode, label: "Source Code" %>
   <%= f.input :logo_project, label: "Project Logo" %>
+  <%= f.button :submit, "Add a Project", class: "btn btn-primary"%>
   <% end %>
   <ul class="list-inline pull-right">
   <li><button type="button" class="btn btn-danger prev-step">Previous</button></li>
   <li><button type="button" class="btn btn-danger next-step">Skip</button></li>
   <li>
-      <%= p.button :submit, "Save and continue", class: "btn btn-danger"%>
+        <button type="button" class="btn btn-danger btn-info-full next-step">Continue</button>
   </li>
-  <%end%>
   </ul>

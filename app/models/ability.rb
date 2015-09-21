@@ -10,6 +10,9 @@ class Ability
     can :manage, Profile do |profile|
       profile.user == user
     end
+  
+
+
 
     if user.admin?
       can :manage, :all?
