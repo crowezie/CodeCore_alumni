@@ -1,5 +1,5 @@
 <%= simple_form_for @profile, remote: true do |p| %>
-<%= p.simple_fields_for :asset_attributes do |f| %>
+<%= p.simple_fields_for :asset do |f| %>
   <%= f.input        :linkedin, label: "Linkedin" %>
   <%= f.input        :github, label: "GitHub" %>
   <%= f.input        :twitter, label: "Twitter" %>
