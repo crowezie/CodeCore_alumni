@@ -20,9 +20,10 @@
   // $(".owl-carousel").owlCarousel();
   });
 </script>
-<div style="background-color: black">
+
+<div class="carousel-bg">
   <div id="carousel" class="owl-carousel">
-    <% logo_array = %w(no_avatar1.jpg no_avatar2.png madoka-on-nyan.gif) %>
+    <% logo_array = %w(no_avatar1.png no_avatar2.png no_avatar3.png no_avatar4.png) %>
     <% google_maps_search = "http://maps.google.com/?q=" %>
     <% @profiles.where(availability: :true).each do |p| %>
       <div class="thumbnail">
@@ -31,7 +32,9 @@
   			<% else %>
   				<% profile_image = asset_path(logo_array.sample) %>
   			<% end %>
-        <%= image_tag profile_image, class:"img-thumbnail img-responsive" %>
+        <div class="carousel-photo">
+          <%= image_tag profile_image, class:"img-thumbnail img-responsive" %>
+        </div>
 
         <div class="panel panel-default">
           <div class="panel-heading centered">
@@ -42,7 +45,7 @@
           </div>
           <div class="panel-footer centered">
             <% locate_me = google_maps_search + p.location %>
-            <a href=<%= locate_me %>><%= "#{p.location}" %></a>
+            <a href=<%= locate_me %>, target="_blank"><%= "#{p.location}" %></a>
           </div>
         </div>
         <%= link_to "#{fa_icon('search')} View".html_safe, profile_path(p), class: "btn btn-danger btn-block fa-lg" %>
