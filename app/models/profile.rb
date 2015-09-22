@@ -37,4 +37,12 @@ class Profile < ActiveRecord::Base
     self.email ||= @profile.user.email
   end
 
+  def self.search(value)
+    search_term = "%#{value}%"
+    # includes(:user).where("availability = ? AND (first_name ILIKE ? OR last_name ILIKE ?)", true, search_term, search_term).references(:user)
+    # The query above has hard-coded availability = true clause.
+    # The query above doesn't have it so the search can be used on All or Available section.
+    includes(:user).where("first_name ILIKE ? OR last_name ILIKE ?", search_term, search_term).references(:user)
+  end
+
 end
