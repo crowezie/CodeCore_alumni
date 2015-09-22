@@ -38,7 +38,7 @@
       <div class="col-md-3 col-xs-3 profile-well"><i class="fa fa-github fa-lg"></i> </div>
 			<% end %>
 			<% if @profile.asset.resume %>
-      <div class="col-md-3 col-xs-3 profile-well"><i class="fa fa-download fa-lg"></i> Resume</div>
+      <div class="col-md-3 col-xs-3 profile-well"> <%= link_to "<i class='fa fa-download fa-lg'> </i>Resume".html_safe, @profile.asset.resume.url if @profile.asset.resume.present? %></div>
 			<% end %>
 			<% end %>
     </div>

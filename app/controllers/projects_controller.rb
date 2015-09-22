@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
           flash[:alert] = "See errors below"
           render :new
         }
-        # format.js { render js: 'head :internal_server_error' }
+        format.js { render js: ' alert("error")' }
       end
     end
   end
