@@ -22,7 +22,7 @@
     $("#carousel-next").offset({top:$("div.carousel-bg").offset().top, right: 0});
   });
 </script>
-
+<%= @profiles.count %>
 <%= paginate @profiles %>
 
 <div class="carousel-bg">
