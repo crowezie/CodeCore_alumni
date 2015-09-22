@@ -23,7 +23,7 @@ class EducationsController < ApplicationController
         flash[:alert] = "See Errors Below"
         render :new
       }
-      format.js{ head :internal_server_error }
+      format.js{ render js: ' alert("error")'}
       end
     end
   end
@@ -60,7 +60,7 @@ class EducationsController < ApplicationController
                                         :year_from,
                                         :year_to,
                                         :degree,
-                                        :logo] )
+                                        :logo_education] )
   end
 
   def authorize!

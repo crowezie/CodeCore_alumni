@@ -42,11 +42,26 @@ class ProfilesController < ApplicationController
   end
 
   def index
-    if params[:search] == "awesome"
-      @profiles = Profile.all
+    @viewing_profiles = true
+    if params[:search]
+      @profiles = Profile.search(params[:search])
     else
-      @profiles = Profile.where("availability = ?", true)
+      @profiles = Profile.all
     end
+
+    @profiles = @profiles.where("availability = ?", true) unless params[:show_all]
+    @profiles = @profiles.page(params[:page]).per(20)
+
+    # if params[:show_all]
+    #   @profiles = Profile.all
+    # else
+    #   if params[:search]
+    #     @profiles = Profile.search(params[:search])
+    #   else
+    #     @profiles = Profile.where("availability = ?", true)
+    #   end
+    # end
+    # @profiles = @profiles.page(params[:page]).per(20)
   end
 
   def edit

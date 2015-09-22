@@ -9,6 +9,9 @@ class LogoProjectUploader < CarrierWave::Uploader::Base
   version :thumb do
     process :resize_to_fit => [50, 50]
   end
+  version :display do
+    process :resize_to_fit => [400, 129]
+  end
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog

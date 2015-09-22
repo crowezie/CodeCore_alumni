@@ -15,6 +15,10 @@
     font-size: 25px;
     padding: 15px;
     border-radius: 0px !important;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
 }
 
 .profile-well:hover {
@@ -30,11 +34,11 @@
 }
 
 .profile-body {
-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-font-size: 14px;
-line-height: 1.42857143;
-color: #fff;
-background-color: #F1F1F1;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #fff;
+  background-color: #F1F1F1;
 }
 
 .profile-bg_blur
@@ -126,18 +130,36 @@ background-color: #F1F1F1;
 .carousel-bg {
   background-image: url(/assets/code.png);
   background-size: 100%;
+  height: 510px;
   border-radius: 5px;
   opacity: 1;
 }
 
 .carousel-photo {
-  width: 216px;
-  height: 216px;
+  width: 218px;
+  height: 218px;
 }
 
-.pitch-div {
-  height: 150px;
-  overflow: scroll;
+.inline {
+  height: 510px;
+}
+
+.top-most {
+  z-index: 1000;
+}
+
+.float-left {
+  position: absolute;
+  float: left;
+  left: 0px;
+  top: 100px;
+}
+
+.float-right {
+  position: absolute;
+  float: right;
+  right: 0px;
+  top: 100px;
 }
 
 .centered {
@@ -152,4 +174,37 @@ background-color: #F1F1F1;
 .thumbnail {
   background-color: #DDDDDD;
   opacity: 0.90;
+  overflow: hidden;
+}
+
+.thumbnail-pitch {
+  height: 150px;
+  overflow: scroll;
+}
+
+.thumbnail-text-height {
+  height: 40px;
+}
+
+.thumbnail-scroll {
+  overflow: scroll;
+}
+
+#carousel-prev, #carousel-next {
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+
+#carousel-prev:hover, #carousel-next:hover {
+  opacity: 0.8;
+}
+
+div.thumbnail {
+  transition: opacity 0.5s ease;
+  opacity: 0.8;
+}
+
+div.thumbnail:hover {
+  opacity: 1;
+  box-shadow: 2px 2px 2px #DDDDDD
 }

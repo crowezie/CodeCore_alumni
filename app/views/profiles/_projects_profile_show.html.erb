@@ -1,9 +1,7 @@
 <div class="row">
 
-    <div class="col-md-7">
-        <a href="#">
-            <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-        </a>
+    <div class="col-md-2">
+            <%=image_tag project.logo_project.url(:display), class: "img-responsive" %>
     </div>
 
     <div class="col-md-5">
@@ -12,15 +10,12 @@
         <p>
           <%=project.description%>
         </p>
-        <a class="btn btn-primary" href="#">View <span class="glyphicon glyphicon-chevron-right"></span>
+        <a class="btn btn-danger" href="#">View <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
-        <a class="btn btn-primary" href="#">Source Code<span class="glyphicon glyphicon-chevron-right"></span>
+        <a class="btn btn-danger" href="#">Source Code<span class="glyphicon glyphicon-chevron-right"></span>
         </a>
     </div>
 
 </div>
 
 <hr>
-
-    
-

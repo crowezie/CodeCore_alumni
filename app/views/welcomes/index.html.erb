@@ -8,23 +8,28 @@
 	<% end %>
 
   <div class="content1" style='text-align:center;'>
-    <div>
       <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, Ut enim ad minim veniam, quis nostrud
+        <i class="fa fa-quote-left"></i>
+          <span style="font-weight:200;letter-spacing:1px">
+            Everyone should learn how to code, it teaches you how to think
+          </span>
+        <i class="fa fa-quote-right"></i>
+        <br>
+        <span style="font-size: 20px">- Steve Jobs</span>
       </p>
-    </div>
+
+
+      <div class="box" style="float:right;">
+        <%= link_to "AVAILABLE STUDENTS", profiles_path, class: "homepage btn btn-default" %>
+      </div>
+      <div class="box" style="float:right;">
+        <%= link_to "SIGN IN", new_session_path, class: "homepage btn btn-default" %>
+      </div>
+      <div class="box" style="float:left;">
+        <%= link_to "VIEW ALL STUDENTS", profiles_path, class: "homepage btn btn-default" %>
+      </div>
+
   </div>
 
-  <div class="container">
-    <div class="box" style="float: right;">
-      <%= link_to "SIGN IN", new_session_path, class: "homepage btn btn-default" %>
-    </div>
-    <div class="box" style="float:right;">
-      <%= link_to "STUDENTS AVAILABLE", profiles_path, class: "homepage btn btn-default" %>
-    </div>
-    <div class="box" style="float:left;">
-      <%= link_to "VIEW ALL", profiles_path, class: "homepage btn btn-default" %>
-    </div>
-  </div>
 </div>
 </body>

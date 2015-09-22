@@ -9,6 +9,10 @@ class Profile < ActiveRecord::Base
   has_many :inquiries, dependent: :nullify
 
   mount_uploader :image, ImageUploader
+  mount_uploader :logo_education, LogoEducationUploader
+  mount_uploader :logo_experience, LogoExperienceUploader
+  mount_uploader :logo_project, LogoProjectUploader
+  mount_uploader :resume, ResumeUploader
 
 
   validates :description, presence: true
@@ -17,7 +21,7 @@ class Profile < ActiveRecord::Base
 
   validates :email, format: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
-  # accepts_nested_attributes_for :asset
+  accepts_nested_attributes_for :asset
   # accepts_nested_attributes_for :projects
   # accepts_nested_attributes_for :educations
   # accepts_nested_attributes_for :experiences
@@ -31,6 +35,14 @@ class Profile < ActiveRecord::Base
   def set_defaults
     self.availability ||=false
     self.email ||= @profile.user.email
+  end
+
+  def self.search(value)
+    search_term = "%#{value}%"
+    # includes(:user).where("availability = ? AND (first_name ILIKE ? OR last_name ILIKE ?)", true, search_term, search_term).references(:user)
+    # The query above has hard-coded availability = true clause.
+    # The query above doesn't have it so the search can be used on All or Available section.
+    includes(:user).where("first_name ILIKE ? OR last_name ILIKE ?", search_term, search_term).references(:user)
   end
 
 end

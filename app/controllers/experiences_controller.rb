@@ -23,7 +23,7 @@ class ExperiencesController < ApplicationController
           flash[:alert] = "See Errors Below"
           render :new
         }
-        format.js {head :internal_server_error}
+        format.js {render js: ' alert("error")'}
       end
     end
   end
@@ -61,7 +61,7 @@ class ExperiencesController < ApplicationController
                                          :company,
                                          :description,
                                          :weblink,
-                                         :logo] )
+                                         :logo_experience] )
   end
 
   def authorize!
