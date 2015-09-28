@@ -24,9 +24,9 @@
 </script>
 
 <%# if @viewing_profiles %>
-  <form class="navbar-form navbar-left" role="search">
+  <form class="search-bar" role="search">
     <%= form_for profiles_path, method: :get do %>
-      <%= search_field_tag :search, params[:search], class: "form-control", placeholder: "Search.." %>
+      <%= search_field_tag :search, params[:search], class: "form-control" , placeholder: "Search.." %>
       <button type="submit" class="btn btn-default">
         <%= fa_icon("search") %>
       </button>
