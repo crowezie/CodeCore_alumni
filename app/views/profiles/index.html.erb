@@ -22,7 +22,19 @@
     $("#carousel-next").offset({top:$("div.carousel-bg").offset().top, right: 0});
   });
 </script>
-<%= @profiles.count %>
+
+<%# if @viewing_profiles %>
+  <form class="search-bar" role="search">
+    <%= form_for profiles_path, method: :get do %>
+      <%= search_field_tag :search, params[:search], class: "form-control" , placeholder: "Search.." %>
+      <button type="submit" class="btn btn-default">
+        <%= fa_icon("search") %>
+      </button>
+    <% end %>
+  </form>
+<%# end %>
+
+<%#= @profiles.count %>
 <%= paginate @profiles %>
 
 <div class="carousel-bg">
