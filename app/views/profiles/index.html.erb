@@ -18,29 +18,36 @@
     $(".prev").click(function(){
       owl.trigger('owl.prev');
     })
-  // $(".owl-carousel").owlCarousel();
+    $("#carousel-prev").offset({top:$("div.carousel-bg").offset().top, left: 0});
+    $("#carousel-next").offset({top:$("div.carousel-bg").offset().top, right: 0});
   });
 </script>
 
+<%# if @viewing_profiles %>
+  <form class="search-bar" role="search">
+    <%= form_for profiles_path, method: :get do %>
+      <%= search_field_tag :search, params[:search], class: "form-control" , placeholder: "Search.." %>
+      <button type="submit" class="btn btn-default">
+        <%= fa_icon("search") %>
+      </button>
+    <% end %>
+  </form>
+<%# end %>
+
+<%#= @profiles.count %>
 <%= paginate @profiles %>
 
-<div class="customNavigation btn-group btn-group-justified" role="group" aria-label="...">
-  <!-- <div class="btn-group">
-    <button type="button" class="btn btn-danger prev fa-lg"><%= fa_icon("backward") %></button>
-  </div> -->
-  <!-- <div class="btn-group inline float-right top-most">
-    <button type="button" class="btn btn-danger next fa-lg inline float-right"><%= fa_icon("forward") %></button>
-  </div> -->
-</div>
 <div class="carousel-bg">
   <div class="btn-group inline float-left top-most">
-    <button type="button" class="btn btn-danger prev fa-lg inline float-left"><%= fa_icon("backward") %></button>
+    <button type="button" id="carousel-prev" class="btn btn-danger prev fa-lg inline float-left"><%= fa_icon("backward") %></button>
   </div>
   <div class="btn-group inline float-right top-most">
-    <button type="button" class="btn btn-danger next fa-lg inline float-right"><%= fa_icon("forward") %></button>
+    <button type="button" id="carousel-next" class="btn btn-danger next fa-lg inline float-right"><%= fa_icon("forward") %></button>
   </div>
   <div id="carousel" class="owl-carousel">
-    <% logo_array = %w(no_avatar1.png no_avatar2.png no_avatar3.png no_avatar4.png) %>
+
+    <% logo_array = [] %>
+    <% (1..7).each {|n| logo_array.push "no_avatar#{n}.png"} %>
     <% google_maps_search = "http://maps.google.com/?q=" %>
     <% @profiles.where(availability: :true).each do |p| %>
       <div class="thumbnail">
@@ -50,13 +57,13 @@
         </div>
 
         <div class="panel panel-default">
-          <div class="panel-heading centered">
-            <h3 class="panel-title"><%= "#{p.user.first_name} #{p.user.last_name}" %></h3>
+          <div class="panel-heading centered thumbnail-text-height thumbnail-scroll">
+            <p><strong><%= "#{p.user.first_name} #{p.user.last_name}" %></strong></p>
           </div>
-          <div class="panel-body pitch-div">
+          <div class="panel-body thumbnail-pitch thumbnail-scroll">
             <%= "#{p.pitch}" %>
           </div>
-          <div class="panel-footer centered">
+          <div class="panel-footer centered thumbnail-text-height thumbnail-scroll">
             <% locate_me = google_maps_search + p.location %>
             <a href=<%= locate_me %>, target="_blank"><%= "#{p.location}" %></a>
           </div>

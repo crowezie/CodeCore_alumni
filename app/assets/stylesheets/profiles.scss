@@ -15,6 +15,10 @@
     font-size: 25px;
     padding: 15px;
     border-radius: 0px !important;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
 }
 
 .profile-well:hover {
@@ -30,11 +34,11 @@
 }
 
 .profile-body {
-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-font-size: 14px;
-line-height: 1.42857143;
-color: #fff;
-background-color: #F1F1F1;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #fff;
+  background-color: #F1F1F1;
 }
 
 .profile-bg_blur
@@ -136,11 +140,6 @@ background-color: #F1F1F1;
   height: 218px;
 }
 
-.pitch-div {
-  height: 150px;
-  overflow: scroll;
-}
-
 .inline {
   height: 510px;
 }
@@ -152,14 +151,14 @@ background-color: #F1F1F1;
 .float-left {
   position: absolute;
   float: left;
-  left: 10px;
+  left: 0px;
   top: 100px;
 }
 
 .float-right {
   position: absolute;
   float: right;
-  right: 10px;
+  right: 0px;
   top: 100px;
 }
 
@@ -175,4 +174,43 @@ background-color: #F1F1F1;
 .thumbnail {
   background-color: #DDDDDD;
   opacity: 0.90;
+  overflow: hidden;
 }
+
+.thumbnail-pitch {
+  height: 150px;
+  overflow: scroll;
+}
+
+.thumbnail-text-height {
+  height: 40px;
+}
+
+.thumbnail-scroll {
+  overflow: scroll;
+}
+
+#carousel-prev, #carousel-next {
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+
+#carousel-prev:hover, #carousel-next:hover {
+  opacity: 0.8;
+}
+
+div.thumbnail {
+  transition: opacity 0.5s ease;
+  opacity: 0.8;
+}
+
+div.thumbnail:hover {
+  opacity: 1;
+  box-shadow: 2px 2px 2px #DDDDDD
+}
+
+.search-bar {
+  width: 200px;
+  display: -webkit-box;
+}
+

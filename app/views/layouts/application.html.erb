@@ -29,5 +29,16 @@
   <!-- footer -->
   <%= render "/layouts/footer" %>
 
+  <script>
+  window.addEventListener("scroll", function() {
+    if (window.scrollY > 500) {
+        $('.navbar-default').fadeOut();
+    }
+    else {
+        $('.navbar-default').fadeIn();
+    }
+},false);
+</script>
+
 </body>
 </html>
